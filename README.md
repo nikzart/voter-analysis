@@ -4,13 +4,14 @@ A Python-based tool for cleaning and standardizing voter list CSV data.
 
 ## Features
 
+- **AI-based Religion Inference** - Uses Azure OpenAI to infer religion (Hindu, Christian, Muslim) from names based on Kerala naming conventions
 - **Splits Gender/Age column** into separate Gender (M/F) and Age (numeric) columns
 - Standardizes ward/house number formatting
 - Detects and flags missing SEC IDs
 - Identifies duplicate entries
 - Transliterates Malayalam text to Latin script (optional, requires Azure OpenAI)
 - Removes extra whitespace and normalizes text
-- Generates detailed cleaning reports
+- Generates detailed cleaning reports with religion distribution statistics
 
 ## Setup
 
@@ -57,6 +58,8 @@ Run the cleaning script:
 python clean_voters_csv.py
 ```
 
+**Note:** The religion inference feature uses Azure OpenAI and processes records in batches. For the full dataset (712 records), expect processing to take **8-12 minutes**. The script shows progress indicators as it processes each batch.
+
 ### Input
 
 - `Pattathanam Voters List - Rosedale-001.csv` - Original voter list data
@@ -71,11 +74,17 @@ python clean_voters_csv.py
 1. **Gender/Age Column Split**: Separates combined "Gender / Age" column into:
    - `Gender`: Single character ('M' or 'F')
    - `Age`: Numeric integer value
-2. **Ward Number Standardization**: Converts all ward numbers to 3-digit format (e.g., `43/979` → `043/979`)
-3. **Missing SEC ID Flagging**: Marks entries without SEC IDs as `REVIEW_NEEDED`
-4. **Duplicate Detection**: Flags potential duplicate entries for manual review
-5. **Malayalam Transliteration**: Converts Malayalam text to Latin script
-6. **Whitespace Normalization**: Removes extra spaces and cleans text fields
+2. **Religion Inference** (AI-powered): Uses Azure OpenAI to classify religion based on names
+   - Analyzes voter name and guardian name
+   - Context-aware for Kerala, India naming conventions
+   - Returns: Hindu, Christian, or Muslim
+   - Processes in batches with automatic retry logic
+   - ⏱️ Processing time: ~10 seconds per 20 records
+3. **Ward Number Standardization**: Converts all ward numbers to 3-digit format (e.g., `43/979` → `043/979`)
+4. **Missing SEC ID Flagging**: Marks entries without SEC IDs as `REVIEW_NEEDED`
+5. **Duplicate Detection**: Flags potential duplicate entries for manual review
+6. **Malayalam Transliteration**: Converts Malayalam text to Latin script
+7. **Whitespace Normalization**: Removes extra spaces and cleans text fields
 
 ## Output Format
 

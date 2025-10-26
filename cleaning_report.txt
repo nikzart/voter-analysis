@@ -23,7 +23,7 @@ MALAYALAM TRANSLITERATIONS (1 records)
 --------------------------------------------------------------------------------
   Line 41:
     Original: പൈനേരിയിൽ വീട്
-    Transliterated: Paaineriyil Veedu (manually corrected - API returned empty)
+    Transliterated: 
 
 
 --------------------------------------------------------------------------------
@@ -42,6 +42,18 @@ GENDER/AGE COLUMN SPLIT
 Successfully split: 712 records
 No errors encountered
 
+--------------------------------------------------------------------------------
+RELIGION INFERENCE (AI-based)
+--------------------------------------------------------------------------------
+Total records classified: 712
+API calls made: 36
+Processing time: 615.03 seconds
+
+Distribution:
+  Hindu: 322 (45.2%)
+  Christian: 209 (29.4%)
+  Muslim: 181 (25.4%)
+
 ================================================================================
 SUMMARY
 ================================================================================
@@ -50,6 +62,7 @@ Malayalam text transliterated: 1
 Format standardizations: 2
 Spacing fixes: 0
 Gender/Age records split: 712
+Religions inferred: 712
 
 Original file preserved. Cleaned data saved with '_cleaned' suffix.
 ================================================================================
