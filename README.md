@@ -4,6 +4,7 @@ A Python-based tool for cleaning and standardizing voter list CSV data.
 
 ## Features
 
+- **Splits Gender/Age column** into separate Gender (M/F) and Age (numeric) columns
 - Standardizes ward/house number formatting
 - Detects and flags missing SEC IDs
 - Identifies duplicate entries
@@ -67,11 +68,14 @@ python clean_voters_csv.py
 
 ## Data Cleaning Operations
 
-1. **Ward Number Standardization**: Converts all ward numbers to 3-digit format (e.g., `43/979` → `043/979`)
-2. **Missing SEC ID Flagging**: Marks entries without SEC IDs as `REVIEW_NEEDED`
-3. **Duplicate Detection**: Flags potential duplicate entries for manual review
-4. **Malayalam Transliteration**: Converts Malayalam text to Latin script
-5. **Whitespace Normalization**: Removes extra spaces and cleans text fields
+1. **Gender/Age Column Split**: Separates combined "Gender / Age" column into:
+   - `Gender`: Single character ('M' or 'F')
+   - `Age`: Numeric integer value
+2. **Ward Number Standardization**: Converts all ward numbers to 3-digit format (e.g., `43/979` → `043/979`)
+3. **Missing SEC ID Flagging**: Marks entries without SEC IDs as `REVIEW_NEEDED`
+4. **Duplicate Detection**: Flags potential duplicate entries for manual review
+5. **Malayalam Transliteration**: Converts Malayalam text to Latin script
+6. **Whitespace Normalization**: Removes extra spaces and cleans text fields
 
 ## Output Format
 

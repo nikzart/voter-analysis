@@ -32,7 +32,9 @@ report_data = {
     'duplicates': [],
     'malayalam_transliterations': [],
     'ward_format_changes': [],
-    'spacing_fixes': 0
+    'spacing_fixes': 0,
+    'gender_age_splits': 0,
+    'gender_age_errors': []
 }
 
 def transliterate_malayalam(text):
@@ -101,6 +103,28 @@ def detect_malayalam(text):
     malayalam_range = r'[\u0D00-\u0D7F]'
     return bool(re.search(malayalam_range, str(text)))
 
+def split_gender_age(gender_age_str):
+    """Split 'Gender / Age' column into separate Gender and Age values"""
+    if pd.isna(gender_age_str) or gender_age_str == '':
+        return None, None
+
+    # Pattern: {Gender} / {Age}
+    # Example: "M / 60" or "F / 56"
+    match = re.match(r'([MF])\s*/\s*(\d+)', str(gender_age_str).strip())
+
+    if match:
+        gender = match.group(1)  # 'M' or 'F'
+        age = int(match.group(2))  # Convert to integer
+        report_data['gender_age_splits'] += 1
+        return gender, age
+    else:
+        # If pattern doesn't match, record error
+        report_data['gender_age_errors'].append({
+            'value': gender_age_str,
+            'error': 'Could not parse gender/age format'
+        })
+        return None, None
+
 def main():
     print("Loading CSV file...")
 
@@ -110,6 +134,24 @@ def main():
 
     report_data['total_records'] = len(df)
     print(f"Loaded {report_data['total_records']} records")
+
+    # Split Gender/Age column into separate columns
+    print("\nSplitting Gender/Age column...")
+    df[['Gender', 'Age']] = df['Gender / Age'].apply(
+        lambda x: pd.Series(split_gender_age(x))
+    )
+
+    # Reorder columns: keep Gender and Age where Gender/Age was
+    cols = list(df.columns)
+    gender_age_idx = cols.index('Gender / Age')
+    # Remove Gender/Age, Gender, and Age from their current positions
+    cols.remove('Gender / Age')
+    cols.remove('Gender')
+    cols.remove('Age')
+    # Insert Gender and Age at the original Gender/Age position
+    cols.insert(gender_age_idx, 'Age')
+    cols.insert(gender_age_idx, 'Gender')
+    df = df[cols]
 
     # Add a Notes column for flagging issues
     df['Notes'] = ''
@@ -155,10 +197,13 @@ def main():
         if notes:
             df.at[idx, 'Notes'] = '; '.join(notes)
 
-    # Check for duplicates (comparing Name, Guardian's Name, and Age)
+    # Check for duplicates (comparing Name, Guardian's Name, Gender and Age)
     print("\nChecking for duplicates...")
-    df['Name_Guardian_Age'] = df['Name'].astype(str) + '_' + df["Guardian's Name"].astype(str) + '_' + df['Gender / Age'].astype(str)
-    duplicates = df[df.duplicated(subset=['Name_Guardian_Age'], keep=False)]
+    df['Name_Guardian_Gender_Age'] = (df['Name'].astype(str) + '_' +
+                                       df["Guardian's Name"].astype(str) + '_' +
+                                       df['Gender'].astype(str) + '_' +
+                                       df['Age'].astype(str))
+    duplicates = df[df.duplicated(subset=['Name_Guardian_Gender_Age'], keep=False)]
 
     for idx in duplicates.index:
         current_note = df.at[idx, 'Notes']
@@ -169,12 +214,13 @@ def main():
             'line': idx + 2,
             'name': df.at[idx, 'Name'],
             'guardian': df.at[idx, "Guardian's Name"],
-            'age': df.at[idx, 'Gender / Age'],
+            'gender': df.at[idx, 'Gender'],
+            'age': df.at[idx, 'Age'],
             'sec_id': df.at[idx, 'New SEC ID No.']
         })
 
     # Remove temporary column
-    df.drop('Name_Guardian_Age', axis=1, inplace=True)
+    df.drop('Name_Guardian_Gender_Age', axis=1, inplace=True)
 
     # Save cleaned CSV
     output_file = "Pattathanam Voters List - Rosedale-001_cleaned.csv"
@@ -213,7 +259,7 @@ def generate_report():
         if report_data['duplicates']:
             for item in report_data['duplicates']:
                 f.write(f"  Line {item['line']}: {item['name']} (Guardian: {item['guardian']}, "
-                       f"Age: {item['age']}, SEC ID: {item['sec_id']})\n")
+                       f"Gender: {item['gender']}, Age: {item['age']}, SEC ID: {item['sec_id']})\n")
         else:
             f.write("  None found\n")
         f.write("\n")
@@ -250,6 +296,19 @@ def generate_report():
         f.write(f"SPACING FIXES: {report_data['spacing_fixes']} fields cleaned\n")
         f.write("-" * 80 + "\n\n")
 
+        # Gender/Age Column Split
+        f.write("-" * 80 + "\n")
+        f.write(f"GENDER/AGE COLUMN SPLIT\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"Successfully split: {report_data['gender_age_splits']} records\n")
+        if report_data['gender_age_errors']:
+            f.write(f"Errors encountered: {len(report_data['gender_age_errors'])}\n")
+            for item in report_data['gender_age_errors']:
+                f.write(f"  Value: '{item['value']}' - {item['error']}\n")
+        else:
+            f.write("No errors encountered\n")
+        f.write("\n")
+
         f.write("=" * 80 + "\n")
         f.write("SUMMARY\n")
         f.write("=" * 80 + "\n")
@@ -257,6 +316,7 @@ def generate_report():
         f.write(f"Malayalam text transliterated: {len(report_data['malayalam_transliterations'])}\n")
         f.write(f"Format standardizations: {len(report_data['ward_format_changes'])}\n")
         f.write(f"Spacing fixes: {report_data['spacing_fixes']}\n")
+        f.write(f"Gender/Age records split: {report_data['gender_age_splits']}\n")
         f.write("\nOriginal file preserved. Cleaned data saved with '_cleaned' suffix.\n")
         f.write("=" * 80 + "\n")
 
@@ -267,6 +327,7 @@ def generate_report():
     print("CLEANING SUMMARY")
     print("=" * 80)
     print(f"Total Records: {report_data['total_records']}")
+    print(f"Gender/Age Split: {report_data['gender_age_splits']}")
     print(f"Missing SEC IDs: {len(report_data['missing_sec_ids'])}")
     print(f"Duplicates Found: {len(report_data['duplicates'])}")
     print(f"Malayalam Transliterations: {len(report_data['malayalam_transliterations'])}")
