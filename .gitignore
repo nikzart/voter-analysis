@@ -4,7 +4,9 @@ env/
 *.pyc
 __pycache__/
 
-# Azure credentials - DO NOT COMMIT
+# Environment variables and credentials - DO NOT COMMIT
+.env
+.env.local
 azure-openai-model.md
 
 # OS files

@@ -2,9 +2,12 @@ import pandas as pd
 import re
 from openai import AzureOpenAI
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env.local file
+load_dotenv('.env.local')
 
 # Azure OpenAI Configuration
-# Load credentials from environment variables or config file
 endpoint = os.environ.get('AZURE_OPENAI_ENDPOINT', 'https://coven.cognitiveservices.azure.com/')
 model_name = os.environ.get('AZURE_OPENAI_MODEL', 'gpt-5-mini')
 deployment = os.environ.get('AZURE_OPENAI_DEPLOYMENT', 'gpt-5-mini')
@@ -12,8 +15,9 @@ subscription_key = os.environ.get('AZURE_OPENAI_KEY', '')
 api_version = os.environ.get('AZURE_OPENAI_API_VERSION', '2024-12-01-preview')
 
 if not subscription_key:
-    print("Warning: AZURE_OPENAI_KEY environment variable not set.")
+    print("Warning: AZURE_OPENAI_KEY not found in .env.local file.")
     print("Malayalam transliteration will not work without Azure credentials.")
+    print("Copy .env.local.example to .env.local and add your credentials.")
 
 client = AzureOpenAI(
     api_version=api_version,

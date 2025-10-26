@@ -18,6 +18,7 @@ A Python-based tool for cleaning and standardizing voter list CSV data.
 - Python 3.7+
 - pandas
 - openai (for Malayalam transliteration)
+- python-dotenv
 
 ### Installation
 
@@ -29,19 +30,23 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 2. Install dependencies:
 ```bash
-pip install pandas openai
+pip install pandas openai python-dotenv
 ```
 
-### Configuration (Optional)
-
-For Malayalam transliteration, set the following environment variables:
-
+3. Configure Azure OpenAI (Optional - for Malayalam transliteration):
 ```bash
-export AZURE_OPENAI_ENDPOINT="your-endpoint-url"
-export AZURE_OPENAI_KEY="your-api-key"
-export AZURE_OPENAI_DEPLOYMENT="gpt-5-mini"
-export AZURE_OPENAI_API_VERSION="2024-12-01-preview"
+cp .env.local.example .env.local
 ```
+
+Then edit `.env.local` and add your Azure OpenAI credentials:
+```
+AZURE_OPENAI_ENDPOINT=https://your-endpoint.cognitiveservices.azure.com/
+AZURE_OPENAI_KEY=your-api-key-here
+AZURE_OPENAI_DEPLOYMENT=gpt-5-mini
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
+```
+
+**Note:** The `.env.local` file is git-ignored and will not be committed to the repository.
 
 ## Usage
 
