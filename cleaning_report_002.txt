@@ -1,0 +1,78 @@
+================================================================================
+VOTER LIST CSV CLEANING REPORT
+File: Bharanikkav School South- 002
+================================================================================
+
+Total Records Processed: 1703
+
+--------------------------------------------------------------------------------
+MISSING SEC IDs (15 records)
+--------------------------------------------------------------------------------
+  Line 1690: DON BOSCO PETER (Guardian: Peter)
+  Line 1691: Mercy R (Guardian: DonBosco Peter)
+  Line 1692: Rajesh T S (Guardian: N Sadasivan Nair)
+  Line 1693: Amala R Nair (Guardian: Rajesh T S)
+  Line 1694: Malavika R Nair (Guardian: Rajesh T S)
+  Line 1695: Lisa L (Guardian: Sunilkumar)
+  Line 1696: NIRUPAMA.P.S (Guardian: PRASANNAKUMAR)
+  Line 1697: Sinoj v nair (Guardian: Thulasidasan)
+  Line 1698: Vrinda vm (Guardian: Venugopaal)
+  Line 1699: Aleena Adison (Guardian: Meri manjjula)
+  Line 1700: Meenampika Rathesh (Guardian: Rathesh)
+  Line 1701: Ratheesh (Guardian: Kumar)
+  Line 1702: Vasanthakumari (Guardian: Kumarapillai)
+  Line 1703: MUHAMMED BASETH SALIM (Guardian: ABDUL GAFOOR SALIM)
+  Line 1704: UTHAMAN.B (Guardian: BHASKARAKURUP)
+
+--------------------------------------------------------------------------------
+DUPLICATE ENTRIES (0 records)
+--------------------------------------------------------------------------------
+  None found
+
+--------------------------------------------------------------------------------
+MALAYALAM TRANSLITERATIONS (1 records)
+--------------------------------------------------------------------------------
+  Line 929:
+    Original: Nirmസal Bhavan
+    Transliterated: 
+
+
+--------------------------------------------------------------------------------
+WARD NUMBER FORMAT STANDARDIZATIONS (0 changes)
+--------------------------------------------------------------------------------
+  None found
+
+--------------------------------------------------------------------------------
+SPACING FIXES: 1 fields cleaned
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+GENDER/AGE COLUMN SPLIT
+--------------------------------------------------------------------------------
+Successfully split: 1703 records
+No errors encountered
+
+--------------------------------------------------------------------------------
+RELIGION INFERENCE (AI-based)
+--------------------------------------------------------------------------------
+Total records classified: 1703
+API calls made: 86
+Processing time: 1242.22 seconds
+
+Distribution:
+  Hindu: 1365 (80.2%)
+  Muslim: 209 (12.3%)
+  Christian: 129 (7.6%)
+
+================================================================================
+SUMMARY
+================================================================================
+Records requiring manual review: 15
+Malayalam text transliterated: 1
+Format standardizations: 0
+Spacing fixes: 1
+Gender/Age records split: 1703
+Religions inferred: 1703
+
+Original file preserved. Cleaned data saved with '_cleaned' suffix.
+================================================================================

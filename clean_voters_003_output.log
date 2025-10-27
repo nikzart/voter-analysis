@@ -1,0 +1,116 @@
+Loading CSV file...
+Loaded 1718 records
+
+Splitting Gender/Age column...
+
+Inferring religions using Azure AI...
+Processing 1718 records in batches of 20 with 1 parallel calls...
+Total batches: 86
+  Progress: 1/86 batches (1.2%)
+  Progress: 2/86 batches (2.3%)
+  Progress: 3/86 batches (3.5%)
+  Progress: 4/86 batches (4.7%)
+  Progress: 5/86 batches (5.8%)
+  Progress: 6/86 batches (7.0%)
+  Progress: 7/86 batches (8.1%)
+  Progress: 8/86 batches (9.3%)
+  Progress: 9/86 batches (10.5%)
+  Retrying batch starting at 181 (attempt 2/3)
+  Progress: 10/86 batches (11.6%)
+  Progress: 11/86 batches (12.8%)
+  Progress: 12/86 batches (14.0%)
+  Progress: 13/86 batches (15.1%)
+  Progress: 14/86 batches (16.3%)
+  Progress: 15/86 batches (17.4%)
+  Progress: 16/86 batches (18.6%)
+  Progress: 17/86 batches (19.8%)
+  Progress: 18/86 batches (20.9%)
+  Progress: 19/86 batches (22.1%)
+  Progress: 20/86 batches (23.3%)
+  Progress: 21/86 batches (24.4%)
+  Progress: 22/86 batches (25.6%)
+  Progress: 23/86 batches (26.7%)
+  Progress: 24/86 batches (27.9%)
+  Progress: 25/86 batches (29.1%)
+  Progress: 26/86 batches (30.2%)
+  Progress: 27/86 batches (31.4%)
+  Progress: 28/86 batches (32.6%)
+  Progress: 29/86 batches (33.7%)
+  Progress: 30/86 batches (34.9%)
+  Progress: 31/86 batches (36.0%)
+  Progress: 32/86 batches (37.2%)
+  Progress: 33/86 batches (38.4%)
+  Progress: 34/86 batches (39.5%)
+  Progress: 35/86 batches (40.7%)
+  Progress: 36/86 batches (41.9%)
+  Progress: 37/86 batches (43.0%)
+  Progress: 38/86 batches (44.2%)
+  Progress: 39/86 batches (45.3%)
+  Progress: 40/86 batches (46.5%)
+  Progress: 41/86 batches (47.7%)
+  Progress: 42/86 batches (48.8%)
+  Progress: 43/86 batches (50.0%)
+  Progress: 44/86 batches (51.2%)
+  Progress: 45/86 batches (52.3%)
+  Progress: 46/86 batches (53.5%)
+  Progress: 47/86 batches (54.7%)
+  Progress: 48/86 batches (55.8%)
+  Progress: 49/86 batches (57.0%)
+  Progress: 50/86 batches (58.1%)
+  Progress: 51/86 batches (59.3%)
+  Progress: 52/86 batches (60.5%)
+  Progress: 53/86 batches (61.6%)
+  Progress: 54/86 batches (62.8%)
+  Progress: 55/86 batches (64.0%)
+  Progress: 56/86 batches (65.1%)
+  Progress: 57/86 batches (66.3%)
+  Progress: 58/86 batches (67.4%)
+  Progress: 59/86 batches (68.6%)
+  Progress: 60/86 batches (69.8%)
+  Progress: 61/86 batches (70.9%)
+  Progress: 62/86 batches (72.1%)
+  Progress: 63/86 batches (73.3%)
+  Progress: 64/86 batches (74.4%)
+  Progress: 65/86 batches (75.6%)
+  Progress: 66/86 batches (76.7%)
+  Progress: 67/86 batches (77.9%)
+  Progress: 68/86 batches (79.1%)
+  Progress: 69/86 batches (80.2%)
+  Progress: 70/86 batches (81.4%)
+  Progress: 71/86 batches (82.6%)
+  Progress: 72/86 batches (83.7%)
+  Progress: 73/86 batches (84.9%)
+  Progress: 74/86 batches (86.0%)
+  Progress: 75/86 batches (87.2%)
+  Progress: 76/86 batches (88.4%)
+  Progress: 77/86 batches (89.5%)
+  Progress: 78/86 batches (90.7%)
+  Progress: 79/86 batches (91.9%)
+  Progress: 80/86 batches (93.0%)
+  Progress: 81/86 batches (94.2%)
+  Progress: 82/86 batches (95.3%)
+  Progress: 83/86 batches (96.5%)
+  Progress: 84/86 batches (97.7%)
+  Progress: 85/86 batches (98.8%)
+  Progress: 86/86 batches (100.0%)
+Religion inference completed in 1146.85 seconds
+
+Processing records...
+
+Checking for duplicates...
+
+Cleaned CSV saved to: Pattathanam Voters List - Bharanikkav School North- 003_cleaned.csv
+Report saved to: cleaning_report_003.txt
+
+================================================================================
+CLEANING SUMMARY
+================================================================================
+Total Records: 1718
+Gender/Age Split: 1718
+Religions Inferred: 1718 (Hindu: 1216, Christian: 103, Muslim: 399)
+Missing SEC IDs: 27
+Duplicates Found: 4
+Malayalam Transliterations: 0
+Ward Format Changes: 2
+Spacing Fixes: 0
+================================================================================

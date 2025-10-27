@@ -1,0 +1,90 @@
+================================================================================
+VOTER LIST CSV CLEANING REPORT
+================================================================================
+
+Total Records Processed: 1718
+
+--------------------------------------------------------------------------------
+MISSING SEC IDs (27 records)
+--------------------------------------------------------------------------------
+  Line 1691: MB Sabarinath (Guardian: Madhusudanan)
+  Line 1692: Praveena P (Guardian: Prabhakaran)
+  Line 1693: Nazimudden muhammad noohu (Guardian: Muhammad noohu)
+  Line 1694: T A Ziyad (Guardian: Aziz A)
+  Line 1695: Afzana Ziyad (Guardian: Ziyad)
+  Line 1696: Haroon Ziyad (Guardian: Ziyad)
+  Line 1697: VANDHANA SATHISH (Guardian: SATHISH KUMAR)
+  Line 1698: Raveendran Pillai (Guardian: Ragavan pillai)
+  Line 1699: Sindhukumari (Guardian: Gopalakrishna pillai)
+  Line 1700: Ayyappan m (Guardian: Manoj)
+  Line 1701: Nidhi S L (Guardian: Sunil Kumar B)
+  Line 1702: Sajesh s (Guardian: Sobha p)
+  Line 1703: Syam (Guardian: Sivadasan)
+  Line 1704: Latha S (Guardian: Satheesh kumar)
+  Line 1705: keerthi l (Guardian: Latha s)
+  Line 1706: Kavya Jayakumar (Guardian: Leela Mani)
+  Line 1707: Revathy MS (Guardian: Sindhu)
+  Line 1708: Ambika Devi (Guardian: Nisha)
+  Line 1709: SURYA SHINE (Guardian: SHINE GOPINATH)
+  Line 1710: Anil Kumar S (Guardian: Sundaresan)
+  Line 1711: Rejani N (Guardian: Anil Kumar)
+  Line 1712: Hajara Beevi B (Guardian: Biju)
+  Line 1713: Aisha Zaheer (Guardian: Zaheer)
+  Line 1715: Fathima N (Guardian: Nadeersha)
+  Line 1716: Anandhu krishnan R (Guardian: Raveendran Pillai)
+  Line 1717: Meha J K (Guardian: Jayaprasad)
+  Line 1718: Jayakarthik (Guardian: Jayaprasad)
+
+--------------------------------------------------------------------------------
+DUPLICATE ENTRIES (4 records)
+--------------------------------------------------------------------------------
+  Line 50: Bindhu (Guardian: Thulaseedharan, Gender: F, Age: 45, SEC ID: SEC037499196)
+  Line 51: Bindhu (Guardian: Thulaseedharan, Gender: F, Age: 45, SEC ID: SEC037499214)
+  Line 883: Vishnu (Guardian: Suresh, Gender: M, Age: 30, SEC ID: SEC037497938)
+  Line 1583: Vishnu (Guardian: Suresh, Gender: M, Age: 30, SEC ID: SEC037497905)
+
+--------------------------------------------------------------------------------
+MALAYALAM TRANSLITERATIONS (0 records)
+--------------------------------------------------------------------------------
+  None found
+
+--------------------------------------------------------------------------------
+WARD NUMBER FORMAT STANDARDIZATIONS (2 changes)
+--------------------------------------------------------------------------------
+  34/1859 -> 034/1859
+  40/53 -> 040/53
+
+--------------------------------------------------------------------------------
+SPACING FIXES: 0 fields cleaned
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+GENDER/AGE COLUMN SPLIT
+--------------------------------------------------------------------------------
+Successfully split: 1718 records
+No errors encountered
+
+--------------------------------------------------------------------------------
+RELIGION INFERENCE (AI-based)
+--------------------------------------------------------------------------------
+Total records classified: 1718
+API calls made: 86
+Processing time: 1146.85 seconds
+
+Distribution:
+  Hindu: 1216 (70.8%)
+  Muslim: 399 (23.2%)
+  Christian: 103 (6.0%)
+
+================================================================================
+SUMMARY
+================================================================================
+Records requiring manual review: 31
+Malayalam text transliterated: 0
+Format standardizations: 2
+Spacing fixes: 0
+Gender/Age records split: 1718
+Religions inferred: 1718
+
+Original file preserved. Cleaned data saved with '_cleaned' suffix.
+================================================================================
