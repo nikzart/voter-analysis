@@ -1,0 +1,33 @@
+{
+  "base_url": "https://sec.kerala.gov.in",
+  "form_url": "https://sec.kerala.gov.in/public/voters/list",
+  "output_directory": "output",
+  "delay_between_requests": 1,
+  "max_captcha_retries": 8,
+  "language": "E",
+  "district": "13",
+  "local_body": "eMVLzGlZgA",
+  "azure_openai": {
+    "endpoint": "https://your-resource.cognitiveservices.azure.com/",
+    "deployment": "gpt-4-vision",
+    "api_version": "2024-12-01-preview",
+    "subscription_key": "your-api-key-here"
+  },
+  "wards": [
+    {"value": "WALNgGOZK6", "text": "002 - SAKTHIKULANGARA"},
+    {"value": "MVLzW6VZgA", "text": "006 - KUREEPUZHA WEST"},
+    {"value": "b5X8WaoBq1", "text": "007 - KUREEPUZHA"},
+    {"value": "GaB2Wa1XAq", "text": "008 - NEERAVIL"},
+    {"value": "4WXyW7lZ3G", "text": "011 - KADAVOOR"},
+    {"value": "wNL5WazB8b", "text": "012 - MATHILIL"},
+    {"value": "k8XvWDVLO9", "text": "014 - VADAKKUMBHAGAM"},
+    {"value": "RQBd7N8Zm3", "text": "031 - KILIKOLLOOR"},
+    {"value": "n6Zgo4oZor", "text": "035 - KOLLOORVILA"},
+    {"value": "lMB1WdxLbV", "text": "038 - AKKOLIL"},
+    {"value": "91Bn8G9LwD", "text": "041 - BHARANIKKAVU"},
+    {"value": "P3L6WdlZON", "text": "043 - MUNDAKKAL"},
+    {"value": "3bZJ9zoLN9", "text": "044 - PATTATHANAM"},
+    {"value": "14Xo2vGBJr", "text": "045 - CONTONMENT"},
+    {"value": "WALNgyOZK6", "text": "047 - THAMARAKULAM"}
+  ]
+}
