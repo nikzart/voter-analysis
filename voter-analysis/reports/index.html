@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Election Insights Dashboard - Kollam District</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            color: #1f2937;
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .header .subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1f2937;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px 12px 40px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.2s;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%236b7280" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            background-size: 18px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+
+        .wards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .ward-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+
+        .ward-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-color: #d1d5db;
+        }
+
+        .ward-header {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .ward-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .ward-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .station-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .station-card {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            border-left: 3px solid #3b82f6;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .station-card:hover {
+            background: #f3f4f6;
+            border-left-color: #2563eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .station-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .station-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            padding: 30px 20px;
+            margin-top: 40px;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                Kerala Election Insights Dashboard
+            </h1>
+            <div class="subtitle">Kollam District - 15 Wards, 62 Polling Stations</div>
+
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalWards">-</div>
+                    <div class="stat-label">Wards</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalStations">-</div>
+                    <div class="stat-label">Polling Stations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalVoters">-</div>
+                    <div class="stat-label">Total Voters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="reportsGenerated">-</div>
+                    <div class="stat-label">Reports Generated</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by ward name or station name...">
+            </div>
+        </div>
+
+        <div id="wardsContainer" class="wards-grid">
+            <div class="loading">Loading election insights data...</div>
+        </div>
+
+        <div class="footer">
+            <p>Kerala Election Insights Dashboard</p>
+            <p>Comprehensive analysis includes age, religion, gender, geographic patterns, and anomaly detection</p>
+        </div>
+    </div>
+
+    <script>
+        let allData = null;
+        let searchTerm = '';
+
+        // Load data
+        async function loadData() {
+            try {
+                // Load hierarchy
+                const hierarchyResponse = await fetch('polling_stations_map.json');
+                const hierarchy = await hierarchyResponse.json();
+
+                // Load voter counts
+                let voterCounts = {};
+                try {
+                    const voterCountsResponse = await fetch('voter_counts.json');
+                    voterCounts = await voterCountsResponse.json();
+                } catch (e) {
+                    console.log('Voter counts not available');
+                }
+
+                // Try to load summary
+                let summary = null;
+                try {
+                    const summaryResponse = await fetch('election_insights/generation_summary.json');
+                    summary = await summaryResponse.json();
+                } catch (e) {
+                    console.log('Summary not available yet');
+                }
+
+                // Process data
+                allData = await processData(hierarchy, voterCounts, summary);
+
+                // Update stats
+                updateStats(allData, summary);
+
+                // Render wards
+                renderWards();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('wardsContainer').innerHTML = '<div class="no-results">Error loading data. Please refresh the page.</div>';
+            }
+        }
+
+        async function processData(hierarchy, voterCounts, summary) {
+            const wards = hierarchy.wards.map(ward => {
+                const wardCode = ward.text.split(' - ')[0];
+                const wardName = ward.text.split(' - ')[1];
+                const wardFolderName = `${wardCode}_${wardName}_${wardName}`;
+
+                const stations = ward.polling_stations.map(station => {
+                    const stationNum = station.text.split(' - ')[0];
+                    const stationName = station.text.substring(station.text.indexOf(' - ') + 3);
+
+                    // Build report path - replace each space individually with underscore, replace slashes
+                    // This preserves multiple consecutive spaces as multiple underscores
+                    const sanitizedStationName = stationName.replace(/ /g, '_').replace(/\//g, '_');
+                    const reportPath = `election_insights/${wardFolderName}/${stationNum}_${sanitizedStationName}/election_report.html`;
+
+                    // Get actual voter count from loaded data
+                    const voterCount = voterCounts[station.text] || 0;
+
+                    return {
+                        number: stationNum,
+                        name: stationName,
+                        fullName: station.text,
+                        reportPath: reportPath,
+                        voters: voterCount,
+                        classification: 'SAFE BASE' // Will be accurate once reports are loaded
+                    };
+                });
+
+                return {
+                    code: wardCode,
+                    name: wardName,
+                    fullName: ward.text,
+                    stations: stations,
+                    totalVoters: stations.reduce((sum, s) => sum + s.voters, 0)
+                };
+            });
+
+            return wards;
+        }
+
+        function updateStats(wards, summary) {
+            document.getElementById('totalWards').textContent = wards.length;
+
+            const totalStations = wards.reduce((sum, w) => sum + w.stations.length, 0);
+            document.getElementById('totalStations').textContent = totalStations;
+
+            const totalVoters = wards.reduce((sum, w) => sum + w.totalVoters, 0);
+            document.getElementById('totalVoters').textContent = totalVoters.toLocaleString();
+
+            if (summary && summary.reports_generated) {
+                document.getElementById('reportsGenerated').textContent = `${summary.reports_generated}/${totalStations}`;
+            } else {
+                document.getElementById('reportsGenerated').textContent = '...';
+            }
+        }
+
+        function renderWards() {
+            const container = document.getElementById('wardsContainer');
+
+            // Filter wards by search term
+            let filteredWards = allData.map(ward => {
+                let filteredStations = ward.stations;
+
+                // Apply search filter
+                if (searchTerm) {
+                    filteredStations = filteredStations.filter(s =>
+                        s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        ward.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+                }
+
+                return {
+                    ...ward,
+                    stations: filteredStations
+                };
+            }).filter(ward => ward.stations.length > 0);
+
+            if (filteredWards.length === 0) {
+                container.innerHTML = '<div class="no-results">No stations match your search criteria</div>';
+                return;
+            }
+
+            // Render
+            container.innerHTML = filteredWards.map(ward => `
+                <div class="ward-card">
+                    <div class="ward-header">
+                        <div class="ward-title">${ward.name}</div>
+                        <div class="ward-stats">
+                            <span>📍 ${ward.stations.length} Stations</span>
+                            <span>👥 ${ward.totalVoters.toLocaleString()} Voters</span>
+                        </div>
+                    </div>
+                    <div class="station-list">
+                        ${ward.stations.map(station => `
+                            <a href="${station.reportPath}" class="station-card">
+                                <div class="station-name">${station.number} - ${station.name}</div>
+                                <div class="station-info">
+                                    <span>👥 ${station.voters.toLocaleString()} voters</span>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderWards();
+        });
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
