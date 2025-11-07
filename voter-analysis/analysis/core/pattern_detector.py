@@ -79,22 +79,31 @@ class PatternDetector:
         Returns:
             List of household anomalies
         """
-        if 'house_address' not in self.data.columns:
-            return [{'error': 'Missing house_address column'}]
+        if 'household_id' not in self.data.columns:
+            return [{'error': 'Missing household_id column'}]
 
         anomalies = []
 
         # Group by household
-        household_sizes = self.data.groupby('house_address').size()
+        household_sizes = self.data.groupby('household_id').size()
 
         # Very large households (10+ voters)
         very_large = household_sizes[household_sizes >= 10]
         if len(very_large) > 0:
-            for house, size in very_large.items():
+            for household_id, size in very_large.items():
+                # Extract house address and house name from household_id
+                household_data = self.data[self.data['household_id'] == household_id]
+                house_address = household_data['house_address'].iloc[0] if len(household_data) > 0 else 'Unknown'
+                if 'House Name' in household_data.columns:
+                    house_name = household_data['House Name'].mode()[0] if len(household_data['House Name'].mode()) > 0 else 'N/A'
+                    display_address = f"{house_address} ({house_name})"
+                else:
+                    display_address = house_address
+
                 anomalies.append({
                     'type': 'very_large_household',
                     'category': 'household',
-                    'description': f'Exceptionally large household at {house}: {size} voters',
+                    'description': f'Exceptionally large household at {display_address}: {size} voters',
                     'severity': 'high',
                     'implication': 'High-value target - winning this household = multiple votes'
                 })
@@ -170,26 +179,34 @@ class PatternDetector:
         Returns:
             List of mixed-faith household patterns
         """
-        if 'house_address' not in self.data.columns or 'religion' not in self.data.columns:
+        if 'household_id' not in self.data.columns or 'religion' not in self.data.columns:
             return [{'error': 'Missing required columns'}]
 
         mixed_households = []
 
-        for house, group in self.data.groupby('house_address'):
+        for household_id, group in self.data.groupby('household_id'):
             if len(group) >= 2:  # At least 2 voters
                 religions = group['religion'].unique()
 
                 if len(religions) > 1:  # Multiple religions in same household
                     religion_breakdown = group['religion'].value_counts().to_dict()
 
+                    # Extract house address and house name for display
+                    house_address = group['house_address'].iloc[0] if len(group) > 0 else 'Unknown'
+                    if 'House Name' in group.columns:
+                        house_name = group['House Name'].mode()[0] if len(group['House Name'].mode()) > 0 else 'N/A'
+                        display_address = f"{house_address} ({house_name})"
+                    else:
+                        display_address = house_address
+
                     mixed_households.append({
                         'type': 'mixed_faith_household',
                         'category': 'household_religion',
-                        'house_address': house,
+                        'house_address': display_address,
                         'total_voters': len(group),
                         'religions': list(religions),
                         'breakdown': religion_breakdown,
-                        'description': f'Mixed-faith household at {house}: {len(group)} voters, {len(religions)} religions',
+                        'description': f'Mixed-faith household at {display_address}: {len(group)} voters, {len(religions)} religions',
                         'severity': 'medium',
                         'implication': 'Potential swing household - requires inclusive messaging'
                     })
@@ -199,7 +216,7 @@ class PatternDetector:
             summary = {
                 'type': 'mixed_faith_summary',
                 'category': 'pattern',
-                'description': f'Found {len(mixed_households)} mixed-faith households ({len(mixed_households)/len(self.data.groupby("house_address"))*100:.1f}% of all households)',
+                'description': f'Found {len(mixed_households)} mixed-faith households ({len(mixed_households)/len(self.data.groupby("household_id"))*100:.1f}% of all households)',
                 'severity': 'high' if len(mixed_households) > 10 else 'medium',
                 'implication': 'Significant interfaith mixing indicates openness to cross-community appeal',
                 'details': mixed_households[:10]  # Include top 10

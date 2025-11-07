@@ -33,19 +33,109 @@ class HouseholdAnalyzer:
             self.data[['Gender', 'Age']] = self.data['Gender / Age'].str.extract(r'([MF])\s*/\s*(\d+)')
             self.data['Age'] = pd.to_numeric(self.data['Age'], errors='coerce')
 
-    def get_top_influential_households(self, top_n: int = 10) -> List[Dict]:
+        # Create household identifier using house_address + first 2 letters of house name
+        self.data['household_id'] = self.data.apply(self._create_household_id, axis=1)
+
+    def _get_first_two_letters(self, house_name: str) -> str:
+        """Extract first 2 letters from house name (uppercase, letters only)"""
+        if pd.isna(house_name) or house_name == '' or house_name == 'N/A':
+            return 'XX'  # Default for empty names
+
+        # Remove special characters and spaces, keep only letters
+        clean_name = ''.join(c for c in str(house_name).upper() if c.isalpha())
+
+        if len(clean_name) == 0:
+            return 'XX'
+        elif len(clean_name) == 1:
+            return clean_name * 2  # "A" becomes "AA"
+        else:
+            return clean_name[:2]
+
+    def _create_household_id(self, row) -> str:
+        """Create unique household identifier: house_address|first_2_letters"""
+        house_address = str(row['house_address'])
+
+        # Try to get house name
+        house_name = row.get('House Name', '')
+        first_two = self._get_first_two_letters(house_name)
+
+        # If house name is empty/invalid, try guardian name as fallback
+        if first_two == 'XX' and "Guardian's Name" in row:
+            guardian_name = row.get("Guardian's Name", '')
+            first_two = 'G' + self._get_first_two_letters(guardian_name)[0]  # G + first letter of guardian
+
+        return f"{house_address}|{first_two}"
+
+    def _extract_house_number(self, house_address: str) -> Optional[int]:
+        """Extract numeric house number from address (e.g., '039/1515' -> 1515)"""
+        try:
+            if '/' in str(house_address):
+                parts = str(house_address).split('/')
+                return int(parts[-1])
+            return int(house_address)
+        except (ValueError, AttributeError, IndexError):
+            return None
+
+    def _determine_region(self, house_address: str) -> Dict[str, str]:
+        """Determine which house number region this address belongs to"""
+        house_number = self._extract_house_number(house_address)
+
+        if house_number is None:
+            return {
+                'region': 'Unknown',
+                'label': 'Unknown Region'
+            }
+
+        # Get all house numbers to calculate boundaries
+        all_house_numbers = []
+        for addr in self.data['house_address'].unique():
+            num = self._extract_house_number(addr)
+            if num is not None:
+                all_house_numbers.append(num)
+
+        if not all_house_numbers:
+            return {
+                'region': 'Unknown',
+                'label': 'Unknown Region'
+            }
+
+        min_house = min(all_house_numbers)
+        max_house = max(all_house_numbers)
+        range_size = (max_house - min_house) / 3
+
+        # Define regions
+        low_boundary = min_house + range_size
+        mid_boundary = min_house + (2 * range_size)
+
+        if house_number <= low_boundary:
+            return {
+                'region': 'Low Numbers',
+                'label': f'Low Numbers ({min_house}-{int(low_boundary)})'
+            }
+        elif house_number <= mid_boundary:
+            return {
+                'region': 'Mid Numbers',
+                'label': f'Mid Numbers ({int(low_boundary)+1}-{int(mid_boundary)})'
+            }
+        else:
+            return {
+                'region': 'High Numbers',
+                'label': f'High Numbers ({int(mid_boundary)+1}-{max_house})'
+            }
+
+    def get_top_influential_households(self, top_n: int = 20) -> List[Dict]:
         """
         Get top N influential households based on voter count
         Returns list of households with all member details
         """
-        # Group by house address
-        house_groups = self.data.groupby('house_address')
+        # Group by household_id (house_address + first 2 letters of house name)
+        house_groups = self.data.groupby('household_id')
 
         # Calculate household sizes
         house_sizes = house_groups.size().sort_values(ascending=False)
 
         # Filter out 'Unknown' or invalid addresses
-        house_sizes = house_sizes[~house_sizes.index.isin(['Unknown', '', 'N/A', None])]
+        house_sizes = house_sizes[~house_sizes.index.str.contains('Unknown', na=False)]
 
         # Get top N households
         top_houses = house_sizes.head(top_n)
@@ -53,9 +143,16 @@ class HouseholdAnalyzer:
         influential_households = []
         total_voters = len(self.data)
 
-        for house_address, member_count in top_houses.items():
+        for household_id, member_count in top_houses.items():
             # Get all members of this household
-            household_data = self.data[self.data['house_address'] == house_address]
+            household_data = self.data[self.data['household_id'] == household_id]
+
+            # Extract original house address and most common house name
+            house_address = household_data['house_address'].iloc[0] if len(household_data) > 0 else 'Unknown'
+            if 'House Name' in household_data.columns:
+                house_name = household_data['House Name'].mode()[0] if len(household_data['House Name'].mode()) > 0 else 'N/A'
+            else:
+                house_name = 'N/A'
 
             # Extract member details
             members = self._extract_household_members(household_data)
@@ -79,8 +176,13 @@ class HouseholdAnalyzer:
             # Calculate voting power
             voting_power = round(member_count / total_voters * 100, 2)
 
+            # Determine region
+            region_info = self._determine_region(house_address)
+
             household_info = {
                 'house_address': str(house_address),
+                'house_name': str(house_name),
+                'household_id': str(household_id),
                 'total_members': int(member_count),
                 'voting_power_percentage': voting_power,
                 'head_of_household': head_of_house,
@@ -88,7 +190,9 @@ class HouseholdAnalyzer:
                 'unique_guardians': int(unique_guardians),
                 'religious_composition': religion_comp,
                 'members': members,
-                'strategy': self._generate_household_strategy(member_count, religion_comp, household_type)
+                'strategy': self._generate_household_strategy(member_count, religion_comp, household_type),
+                'region': region_info['region'],
+                'region_label': region_info['label']
             }
 
             influential_households.append(household_info)
@@ -196,11 +300,11 @@ class HouseholdAnalyzer:
 
     def get_household_statistics(self) -> Dict:
         """Get comprehensive household statistics"""
-        house_groups = self.data.groupby('house_address')
+        house_groups = self.data.groupby('household_id')
         house_sizes = house_groups.size()
 
         # Filter out invalid addresses
-        valid_houses = house_sizes[~house_sizes.index.isin(['Unknown', '', 'N/A', None])]
+        valid_houses = house_sizes[~house_sizes.index.str.contains('Unknown', na=False)]
 
         stats = {
             'total_households': len(valid_houses),
@@ -232,16 +336,23 @@ class HouseholdAnalyzer:
 
     def get_top_large_households(self, min_size: int = 5, top_n: int = 20) -> pd.DataFrame:
         """Get top N households with minimum size (for table display)"""
-        house_groups = self.data.groupby('house_address')
+        house_groups = self.data.groupby('household_id')
 
         # Get household sizes and filter
         house_data = []
-        for house_address, group in house_groups:
-            if house_address in ['Unknown', '', 'N/A', None]:
+        for household_id, group in house_groups:
+            if 'Unknown' in household_id:
                 continue
 
             size = len(group)
             if size >= min_size:
+                # Extract house address and house name
+                house_address = group['house_address'].iloc[0] if len(group) > 0 else 'Unknown'
+                if 'House Name' in group.columns:
+                    house_name = group['House Name'].mode()[0] if len(group['House Name'].mode()) > 0 else 'N/A'
+                else:
+                    house_name = 'N/A'
+
                 # Get majority religion
                 if 'religion' in group.columns:
                     religion_counts = group['religion'].value_counts()
@@ -250,7 +361,7 @@ class HouseholdAnalyzer:
                     majority_religion = 'N/A'
 
                 house_data.append({
-                    'House Address': house_address,
+                    'House Address': f"{house_address} ({house_name})",
                     'Voters': size,
                     'Religion (Majority)': majority_religion
                 })
@@ -264,7 +375,7 @@ class HouseholdAnalyzer:
 
     def identify_special_households(self) -> Dict:
         """Identify special types of households for targeted strategies"""
-        house_groups = self.data.groupby('house_address')
+        house_groups = self.data.groupby('household_id')
 
         special = {
             'inter_religious': [],
@@ -275,16 +386,24 @@ class HouseholdAnalyzer:
             'multi_family': []
         }
 
-        for house_address, group in house_groups:
-            if house_address in ['Unknown', '', 'N/A', None] or len(group) < 2:
+        for household_id, group in house_groups:
+            if 'Unknown' in household_id or len(group) < 2:
                 continue
+
+            # Extract house address for display
+            house_address = group['house_address'].iloc[0] if len(group) > 0 else 'Unknown'
+            if 'House Name' in group.columns:
+                house_name = group['House Name'].mode()[0] if len(group['House Name'].mode()) > 0 else 'N/A'
+                display_address = f"{house_address} ({house_name})"
+            else:
+                display_address = house_address
 
             # Inter-religious households
             if 'religion' in group.columns:
                 religions = group['religion'].nunique()
                 if religions > 1:
                     special['inter_religious'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group),
                         'religions': group['religion'].value_counts().to_dict()
                     })
@@ -294,7 +413,7 @@ class HouseholdAnalyzer:
                 youth_pct = ((group['Age'] >= 18) & (group['Age'] <= 35)).mean()
                 if youth_pct > 0.5 and len(group) >= 3:
                     special['youth_concentrated'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group),
                         'youth_percentage': round(youth_pct * 100, 1)
                     })
@@ -302,7 +421,7 @@ class HouseholdAnalyzer:
                 # Senior only households
                 if (group['Age'] >= 60).all() and len(group) >= 1:
                     special['senior_only'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group)
                     })
 
@@ -310,7 +429,7 @@ class HouseholdAnalyzer:
                 first_timers = ((group['Age'] >= 18) & (group['Age'] <= 21)).sum()
                 if first_timers >= 2:
                     special['first_time_voters'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group),
                         'first_time_voters': int(first_timers)
                     })
@@ -319,7 +438,7 @@ class HouseholdAnalyzer:
             if 'Gender' in group.columns:
                 if (group['Gender'] == 'F').all() and len(group) >= 2:
                     special['women_only'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group)
                     })
 
@@ -328,7 +447,7 @@ class HouseholdAnalyzer:
                 unique_guardians = group["Guardian's Name"].nunique()
                 if unique_guardians >= 3:
                     special['multi_family'].append({
-                        'address': house_address,
+                        'address': display_address,
                         'size': len(group),
                         'families': int(unique_guardians)
                     })

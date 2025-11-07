@@ -377,23 +377,8 @@ class ElectionReportGenerator:
         # Get household statistics
         stats = self.household_analyzer.get_household_statistics()
 
-        # Get top 20 large households
-        large_households = self.household_analyzer.get_top_large_households(min_size=5, top_n=20)
-
-        # Get top 10 influential families
-        top_families = self.household_analyzer.get_top_influential_households(top_n=10)
-
-        # Build large households table
-        large_house_rows = ""
-        if len(large_households) > 0:
-            for _, row in large_households.iterrows():
-                large_house_rows += f"""
-                <tr>
-                    <td>{row['House Address']}</td>
-                    <td>{row['Voters']}</td>
-                    <td>{row['Religion (Majority)']}</td>
-                </tr>
-                """
+        # Get top 20 influential families
+        top_families = self.household_analyzer.get_top_influential_households(top_n=20)
 
         # Build influential families section with expandable members
         families_html = ""
@@ -401,21 +386,27 @@ class ElectionReportGenerator:
             # Build member list
             members_html = ""
             for member in family['members']:
+                house_name_html = f"<br><em style='color: #666; font-size: 13px;'>🏠 {member['house_name']}</em>" if member.get('house_name') and member['house_name'] != 'N/A' else ""
                 members_html += f"""
                 <div class="member-item">
                     <strong>{member['serial_no']}</strong> - {member['name']}
-                    ({member['gender']}, {member['age']}) - {member['relationship']}
+                    ({member['gender']}, {member['age']}) - {member['relationship']}{house_name_html}
                 </div>
                 """
 
             # Religious composition
             religion_text = ", ".join([f"{k}: {v}" for k, v in family['religious_composition'].items()])
 
+            # Format house display with name
+            house_display = f"{family['house_address']} ({family['house_name']})" if family.get('house_name') and family['house_name'] != 'N/A' else family['house_address']
+
             families_html += f"""
             <div class="family-card">
                 <div class="family-header" onclick="toggleFamily('family{i}')">
                     <div>
-                        <strong>#{i}. {family['head_of_household']}</strong> - {family['house_address']}
+                        <strong>#{i}. {family['head_of_household']}</strong> - {house_display}
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 {family['region_label']}</span>
                         <br>
                         <span style="font-size: 14px; color: #666;">
                             {family['total_members']} members | {family['voting_power_percentage']}% voting power |
@@ -452,22 +443,8 @@ class ElectionReportGenerator:
                 <strong>Winning one influential family member = winning {stats['average_household_size']} votes</strong></p>
             </div>
 
-            <h3 class="subsection-title">4.2 Top 20 Large Households (5+ Voters)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>House Address</th>
-                        <th>Voters</th>
-                        <th>Religion (Majority)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {large_house_rows}
-                </tbody>
-            </table>
-
-            <h3 class="subsection-title">4.4 Top 10 Influential Family Blocs</h3>
-            <p style="margin-bottom: 15px;"><em>Click on each family to view all members with serial numbers</em></p>
+            <h3 class="subsection-title">4.2 Top 20 Influential Family Blocs</h3>
+            <p style="margin-bottom: 15px;"><em>Click on each family to view all members with serial numbers and house names</em></p>
             {families_html}
         </div>
         """

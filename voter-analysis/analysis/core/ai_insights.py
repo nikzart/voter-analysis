@@ -73,16 +73,18 @@ Provide:
 2. One specific, actionable strategic observation based on these numbers
 3. Any notable patterns or considerations
 
-Be specific, data-driven, and avoid generic advice like "conduct meetings". Focus on what the DATA reveals."""
+Be specific, data-driven, and avoid generic advice like "conduct meetings". Focus on what the DATA reveals.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -107,16 +109,18 @@ Focus on:
 2. Specific demographic advantages or challenges
 3. Data-driven observations about generational dynamics
 
-Be specific and data-focused."""
+Be specific and data-focused.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -140,16 +144,18 @@ Gender Gap: {gender_data.get('gender_gap', 0):,} voters
 
 Middle-aged women (30-50): {gender_data.get('middle_aged_women_count', 0):,} ({gender_data.get('middle_aged_women_percentage', 0)}% of electorate)
 
-Provide data-driven observations about gender dynamics and their electoral significance."""
+Provide data-driven observations about gender dynamics and their electoral significance.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -175,16 +181,18 @@ Household Statistics:
 
 Largest household size: {max([h.get('Voters', 0) for h in large_households[:5]]) if large_households else 0} voters
 
-Provide data-driven observations about household voting patterns and their strategic value."""
+Provide data-driven observations about household voting patterns and their strategic value.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -208,16 +216,18 @@ Identify:
 2. Strategic advantages or vulnerabilities
 3. Unexpected patterns in the data
 
-Be specific and data-focused."""
+Be specific and data-focused.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -241,16 +251,18 @@ Identify:
 2. Regional religious or demographic clusters
 3. Strategic implications of spatial distribution
 
-Be specific and data-focused."""
+Be specific and data-focused.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -273,16 +285,18 @@ Be specific and data-focused."""
 Detected Anomalies:
 {self._format_anomalies(anomalies)}
 
-Explain what these outliers reveal about the electorate and their strategic implications."""
+Explain what these outliers reveal about the electorate and their strategic implications.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election data analyst."},
+                {"role": "system", "content": "You are an expert election data analyst who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
@@ -307,16 +321,18 @@ Provide:
 3. Key demographic leverage points
 4. One critical warning or consideration
 
-Be specific, data-driven, and actionable."""
+Be specific, data-driven, and actionable.
+
+IMPORTANT: Output plain text only. Do NOT use markdown formatting (no **, *, _, ##, bullets, etc.). Write in clear prose."""
 
         response = self.client.chat.completions.create(
             model=self.deployment_name,
             messages=[
-                {"role": "system", "content": "You are an expert election strategist analyzing demographic data."},
+                {"role": "system", "content": "You are an expert election strategist who provides concise, data-driven insights in plain text format without any markdown."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=300
+            max_tokens=600
         )
 
         return response.choices[0].message.content.strip()
