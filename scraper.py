@@ -176,7 +176,6 @@ class VoterListScraper:
                     # Check if we have actual data
                     if len(result_html) > 1000:  # Substantial content
                         logger.info(f"Results loaded after {elapsed_time} seconds")
-                        time.sleep(1)  # Extra second for any final rendering
                         break
 
             # Get final result HTML
@@ -193,47 +192,52 @@ class VoterListScraper:
                 logger.warning("Invalid captcha - captcha rejected by server")
                 return []
 
-            # Extract voter table data with proper column headers
-            voters = []
+            # Extract voter table data with proper column headers using optimized JavaScript
+            voters = page.evaluate("""() => {
+                const voters = [];
+                const tables = document.querySelectorAll('.voters_list_search_result table');
 
-            # Try to find table with voter data
-            tables = page.locator('.voters_list_search_result table').all()
+                tables.forEach(table => {
+                    // Extract headers
+                    const headerElements = table.querySelectorAll('th');
+                    const headers = [];
+                    headerElements.forEach(th => {
+                        const text = th.innerText.trim();
+                        if (text) headers.push(text);
+                    });
 
-            for table in tables:
-                # Extract headers from <th> elements
-                header_elements = table.locator('th').all()
-                headers = []
-                for th in header_elements:
-                    header_text = th.inner_text().strip()
-                    if header_text:
-                        headers.append(header_text)
+                    // Use default headers if none found
+                    const finalHeaders = headers.length > 0 ? headers : Array.from({length: 10}, (_, i) => `column_${i}`);
 
-                # If no headers found, use default column names
-                if not headers:
-                    headers = [f'column_{i}' for i in range(10)]
+                    // Extract data rows
+                    const rows = table.querySelectorAll('tr');
 
-                # Extract data rows
-                rows = table.locator('tr').all()
+                    for (let i = 1; i < rows.length; i++) {  // Skip header row
+                        const cells = rows[i].querySelectorAll('td');
 
-                for row in rows[1:]:  # Skip header row
-                    cells = row.locator('td').all()
+                        if (cells.length >= 3) {
+                            const cellTexts = Array.from(cells).map(cell => cell.innerText.trim());
 
-                    if len(cells) >= 3:  # Ensure we have enough data
-                        cell_texts = [cell.inner_text().strip() for cell in cells]
+                            // Skip header rows with "WARD:" or "POLLING STATION:"
+                            const hasHeaderText = cellTexts.some(text =>
+                                text.includes('WARD:') || text.includes('POLLING STATION:')
+                            );
+                            if (hasHeaderText) continue;
 
-                        # Skip the page header row (contains "WARD:", "POLLING STATION:")
-                        if any('WARD:' in text or 'POLLING STATION:' in text for text in cell_texts):
-                            continue
+                            // Create voter record
+                            const voterData = {};
+                            cellTexts.forEach((text, idx) => {
+                                const key = idx < finalHeaders.length ? finalHeaders[idx] : `column_${idx}`;
+                                voterData[key] = text;
+                            });
 
-                        # Create voter record with proper column names
-                        voter_data = {}
-                        for i, cell_text in enumerate(cell_texts):
-                            if i < len(headers):
-                                voter_data[headers[i]] = cell_text
-                            else:
-                                voter_data[f'column_{i}'] = cell_text
+                            voters.push(voterData);
+                        }
+                    }
+                });
 
-                        voters.append(voter_data)
+                return voters;
+            }""")
 
             logger.info(f"Extracted {len(voters)} voter records")
             return voters
