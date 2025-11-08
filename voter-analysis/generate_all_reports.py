@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate All Polling Station Reports
-Main script to generate comprehensive reports for all 62 polling stations
+Main script to generate comprehensive reports for all 239 polling stations
 """
 
 import sys

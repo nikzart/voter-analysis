@@ -243,7 +243,7 @@
             <h1>
                 Kerala Election Insights Dashboard
             </h1>
-            <div class="subtitle">Kollam District - 15 Wards, 62 Polling Stations</div>
+            <div class="subtitle">Kollam District - 56 Wards, 239 Polling Stations</div>
 
             <div class="stats-grid" id="statsGrid">
                 <div class="stat-card">
@@ -328,14 +328,14 @@
             const wards = hierarchy.wards.map(ward => {
                 const wardCode = ward.text.split(' - ')[0];
                 const wardName = ward.text.split(' - ')[1];
+                // Match actual filesystem: duplicate ward name with spaces preserved
                 const wardFolderName = `${wardCode}_${wardName}_${wardName}`;
 
                 const stations = ward.polling_stations.map(station => {
                     const stationNum = station.text.split(' - ')[0];
                     const stationName = station.text.substring(station.text.indexOf(' - ') + 3);
 
-                    // Build report path - replace each space individually with underscore, replace slashes
-                    // This preserves multiple consecutive spaces as multiple underscores
+                    // Match Python: only replace spaces and slashes, preserve commas/periods/parentheses
                     const sanitizedStationName = stationName.replace(/ /g, '_').replace(/\//g, '_');
                     const reportPath = `election_insights/${wardFolderName}/${stationNum}_${sanitizedStationName}/election_report.html`;
 

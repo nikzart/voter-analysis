@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Insights Report - MSM Auditorium,  Post Office Junction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            color: #333;
+        }
+
+        .report-header {
+            text-align: center;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .station-info {
+            font-size: 18px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .executive-summary {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .critical-finding {
+            background: #ffe4e1;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .classification-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+            margin: 5px 0;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin: 25px 0 15px 0;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+
+        .strategic-insight {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .insight-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #ecf0f1;
+        }
+
+        .priority-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .priority-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .priority-low {
+            color: #95a5a6;
+        }
+
+        .recommendation-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .action-list {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .action-list li {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .family-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .family-header {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .family-header:hover {
+            background: #e9ecef;
+        }
+
+        .family-members {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .family-members.expanded {
+            max-height: 2000px;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .member-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .member-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .report-title {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .family-members {
+                max-height: none !important;
+            }
+        }
+
+        /* New styles for enhanced sections */
+        .ai-insight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .ai-insight-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .pattern-card {
+            border-left: 4px solid #95a5a6;
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .pattern-card.severity-high {
+            border-left-color: #e74c3c;
+            background: #ffe4e1;
+        }
+
+        .pattern-card.severity-medium {
+            border-left-color: #f39c12;
+            background: #fff3cd;
+        }
+
+        .pattern-card.severity-low {
+            border-left-color: #3498db;
+            background: #e8f4f8;
+        }
+
+        .pattern-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .severity-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .pattern-card.severity-medium .severity-badge {
+            background: #f39c12;
+        }
+
+        .pattern-card.severity-low .severity-badge {
+            background: #3498db;
+        }
+
+        .pattern-implication {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+
+        .enclave-card {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 4px;
+        }
+
+        .mixed-area-card {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-header">
+        <div class="report-title">ELECTION INSIGHTS REPORT</div>
+        <div class="station-info">MSM Auditorium,  Post Office Junction</div>
+        <div class="station-info">Pattathanam Assembly Constituency, Kollam District, Kerala</div>
+        <div class="station-info">Generated: 2025-11-09 05:18</div>
+        <div class="station-info">Total Voters Analyzed: 1,691 | Polling Area: MSM Auditorium,  Post Office Junction</div>
+    </div>
+
+    
+        <div class="executive-summary">
+            <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">1,691</div>
+                    <div class="metric-label">Total Voters</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">45.7</div>
+                    <div class="metric-label">Average Age (years)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">44.0</div>
+                    <div class="metric-label">Median Age (years)</div>
+                </div>
+            </div>
+
+            <div class="critical-finding">
+                <h3>Critical Finding</h3>
+                <p><span class="classification-badge" style="background: #27ae60;">SAFE BASE</span></p>
+                <p>Strong Muslim majority provides solid base</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">1. RELIGIOUS DEMOGRAPHICS & STRATEGIC IMPLICATIONS</h2>
+
+            <h3 class="subsection-title">1.1 Religious Composition</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Religion</th>
+                        <th>Total Voters</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>Muslim</td>
+                <td>1,292</td>
+                <td>76.4%</td>
+            </tr>
+            
+            <tr>
+                <td>Hindu</td>
+                <td>360</td>
+                <td>21.3%</td>
+            </tr>
+            
+            <tr>
+                <td>Christian</td>
+                <td>39</td>
+                <td>2.3%</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Insight:</div>
+                <p>Strong Muslim base (76.4%) provides solid foundation. Focus on maintaining unity and high turnout.</p>
+            </div>
+
+            <h3 class="subsection-title">1.2 Age Profiles by Religion</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Religion</th>
+                        <th>Avg Age</th>
+                        <th>Young (≤35)</th>
+                        <th>Middle (36-55)</th>
+                        <th>Senior (56+)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>Muslim</td>
+                    <td>45.8 yrs</td>
+                    <td>356 (27.6%)</td>
+                    <td>610 (47.2%)</td>
+                    <td>326 (25.2%)</td>
+                </tr>
+                
+                <tr>
+                    <td>Hindu</td>
+                    <td>45.4 yrs</td>
+                    <td>100 (27.8%)</td>
+                    <td>171 (47.5%)</td>
+                    <td>89 (24.7%)</td>
+                </tr>
+                
+                <tr>
+                    <td>Christian</td>
+                    <td>45.1 yrs</td>
+                    <td>13 (33.3%)</td>
+                    <td>15 (38.5%)</td>
+                    <td>11 (28.2%)</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">2. AGE-BASED ANALYSIS & GENERATIONAL STRATEGY</h2>
+
+            <h3 class="subsection-title">2.1 Age Distribution</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Age Group</th>
+                        <th>Category</th>
+                        <th>Total</th>
+                        <th>Percentage</th>
+                        <th>Strategic Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>18-25</td>
+                <td>First-time + Early voters</td>
+                <td>120</td>
+                <td>7.1%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>26-35</td>
+                <td>Young professionals</td>
+                <td>349</td>
+                <td>20.6%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>36-45</td>
+                <td>Established families</td>
+                <td>427</td>
+                <td>25.3%</td>
+                <td class="priority-high">HIGHEST</td>
+            </tr>
+            
+            <tr>
+                <td>46-55</td>
+                <td>Peak earning</td>
+                <td>369</td>
+                <td>21.8%</td>
+                <td class="priority-high">HIGHEST</td>
+            </tr>
+            
+            <tr>
+                <td>56-65</td>
+                <td>Pre-retirement</td>
+                <td>223</td>
+                <td>13.2%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>66+</td>
+                <td>Senior citizens</td>
+                <td>203</td>
+                <td>12.0%</td>
+                <td class="priority-medium">MEDIUM</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Critical Insight:</div>
+                <p>Focus on Established families - Decision-makers</p>
+                <p><strong>First-time voters (18-21):</strong> 30 (1.8% of electorate)</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">3. GENDER ANALYSIS - THE WOMEN VOTE</h2>
+
+            <h3 class="subsection-title">3.1 Overall Gender Split</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gender</th>
+                        <th>Count</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Male Voters</td>
+                        <td>831</td>
+                        <td>49.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Female Voters</td>
+                        <td>860</td>
+                        <td>50.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Gender Gap Analysis:</div>
+                <p>Female voters outnumber male voters by 29 votes
+                (1.7% margin).</p>
+            </div>
+
+            <h3 class="subsection-title">3.2 The Critical Demographic: Middle-Aged Women (30-50 years)</h3>
+            <div class="action-list">
+                <p><strong>Total middle-aged women:</strong> 432
+                (25.5% of entire electorate)</p>
+
+                <p><strong>STRATEGIC IMPERATIVE:</strong> This group represents 1 in 4 voters. They are:</p>
+                <ul>
+                    <li>Primary household decision-makers</li>
+                    <li>Concerned about healthcare, education, safety</li>
+                    <li>Influenced by welfare schemes (ration, pension, housing)</li>
+                    <li>Often decide how the entire family votes</li>
+                </ul>
+
+                <p><strong>Campaign Priority:</strong></p>
+                <ul>
+                    <li>Self-help groups (SHG) engagement</li><li>Healthcare and child education focus</li><li>Safety and security messaging</li><li>Cooking gas and ration subsidies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">4. HOUSEHOLD & FAMILY VOTING BLOCS</h2>
+
+            <h3 class="subsection-title">4.1 Household Size Analysis</h3>
+            <p><strong>Total Unique Households:</strong> 735</p>
+            <p><strong>Average Voters per Household:</strong> 2.3</p>
+            <p><strong>Large Households (5+ voters):</strong> 45</p>
+            <p><strong>Very Large Households (8+ voters):</strong> 5</p>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Gold Mine:</div>
+                <p>Large households contain significant voting power.
+                <strong>Winning one influential family member = winning 2.3 votes</strong></p>
+            </div>
+
+            <h3 class="subsection-title">4.2 Top 20 Influential Family Blocs</h3>
+            <p style="margin-bottom: 15px;"><em>Click on each family to view all members with serial numbers and house names</em></p>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family1')">
+                    <div>
+                        <strong>#1. Manar. A</strong> - 033/254 (Dhareefa Ladies Hostel)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            18 members | 1.06% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon1">▼</span>
+                </div>
+                <div class="family-members" id="family1">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Hindu: 7, Christian: 6, Muslim: 5</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1395</strong> - Manar. A
+                    (F, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1397</strong> - Greeshma Krishnan
+                    (F, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1398</strong> - Ashily Alex
+                    (F, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1396</strong> - Sibila Thomas
+                    (F, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1406</strong> - Shibina Ayoob
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1411</strong> - Lincy Thomas
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1410</strong> - Thahzina Nasrin.A
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1409</strong> - Bhadra.I S
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1408</strong> - Antu. P Roy
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1407</strong> - Swetha
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1404</strong> - Ajmi.J
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1405</strong> - Aarsha.J.Kumar
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1403</strong> - Keerthy Prince
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1402</strong> - Sherin.S
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1401</strong> - Sreekutty. V
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1400</strong> - Pooja. S.J
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1399</strong> - Gouri.J.Suresh
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1412</strong> - Al Jaseera Nasrin. K. S
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dhareefa Ladies Hostel</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family2')">
+                    <div>
+                        <strong>#2. AYYAPPAN ACHARI</strong> - 028/0 (sachin bhavan akkaravila nagar)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            15 members | 0.89% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon2">▼</span>
+                </div>
+                <div class="family-members" id="family2">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 11, Hindu: 4</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>3</strong> - AYYAPPAN ACHARI
+                    (M, 73) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 SARASWATHI NILAYAM</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>6</strong> - VIJAYAKUMAI AMMAL
+                    (F, 70) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 SARASWATHY NILAYAM</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>19</strong> - akbarsha a
+                    (M, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 saleena manzil aikya nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>20</strong> - sajeev r
+                    (M, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 sachin bhavan akkaravila nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>38</strong> - saboora
+                    (F, 48) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 safar manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>39</strong> - sheena s
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 sachin bhavan akkaravila nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>47</strong> - ansar
+                    (M, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 sanayya manzil iqbal nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>48</strong> - saleena n
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 saleena manzil aikya nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>76</strong> - noufiya n
+                    (F, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 safeer manzil pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>77</strong> - al ameen m
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 salmath manzil mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>82</strong> - shabin sha akbar sha
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 saleena manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>92</strong> - fousiya s
+                    (F, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 safar manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>95</strong> - nibin sha
+                    (M, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 saleena manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>114</strong> - s sayis ali
+                    (M, 23) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 sayees manzil vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>130</strong> - mohammed safarulla s
+                    (M, 22) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 safar manzil vadakkevila</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family3')">
+                    <div>
+                        <strong>#3. Badarudeen</strong> - 033/299 (Kollantazhikam)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            12 members | 0.71% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon3">▼</span>
+                </div>
+                <div class="family-members" id="family3">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 12</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1514</strong> - Badarudeen
+                    (M, 64) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1515</strong> - Sainulabdeen
+                    (M, 63) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1516</strong> - Nasimudeen
+                    (M, 59) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1518</strong> - Reseena Beevi A
+                    (F, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1519</strong> - Sabitha
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1520</strong> - Saleena
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1524</strong> - Ramzi Muhammed
+                    (M, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1525</strong> - Saliha.B.R
+                    (F, 32) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1526</strong> - Hijas Muhammed
+                    (M, 31) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikathu Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1527</strong> - Muhammed Thazim
+                    (M, 31) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1528</strong> - Muhammad Althaf S
+                    (M, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollanttazhikathu Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1529</strong> - Anfal Muhammed
+                    (M, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kollantazhikam Veedu</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family4')">
+                    <div>
+                        <strong>#4. mohammad ali</strong> - 028/0 (kavitha vadakkevila)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            12 members | 0.71% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon4">▼</span>
+                </div>
+                <div class="family-members" id="family4">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7, Hindu: 5</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>7</strong> - mohammad ali
+                    (M, 65) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 kavitha vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>16</strong> - indhumathi i
+                    (F, 57) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 karamootil veedu vendermukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>18</strong> - nisamudeen
+                    (M, 56) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 kaliyilveedu mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>22</strong> - fathima ali
+                    (F, 54) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 kavitha vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>24</strong> - salahudeen s
+                    (M, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 kadampattu purayidam vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>55</strong> - Sajeena
+                    (F, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 kalililveedu mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>69</strong> - ejas ali
+                    (M, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 kavitha vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>70</strong> - surumi t r
+                    (F, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 kavitha vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>79</strong> - gopika r
+                    (F, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 kannana vayalil veedu mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>93</strong> - midhun murali
+                    (M, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 kannanvayalilveedu mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>120</strong> - shafi m
+                    (M, 23) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 kannelputhen veedu udayasree nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>122</strong> - mrudula murali
+                    (F, 23) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 kannan vayalil vedu mahathma nagar</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family5')">
+                    <div>
+                        <strong>#5. Kasim</strong> - 028/744 (Kannaveed)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            12 members | 0.71% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon5">▼</span>
+                </div>
+                <div class="family-members" id="family5">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 11, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>899</strong> - Kasim
+                    (M, 77) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>900</strong> - Subaida Beevi
+                    (F, 73) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>901</strong> - Nazarudeen
+                    (M, 63) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>903</strong> - Noushad
+                    (M, 53) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>904</strong> - Shailaja
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>905</strong> - Shareenabeevi
+                    (F, 48) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>906</strong> - Sheeja
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>907</strong> - Nihas
+                    (M, 43) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>909</strong> - Simi Mol
+                    (F, 38) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>910</strong> - Al-Ameen
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kanna Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>911</strong> - Al Ameer
+                    (M, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kannaveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>912</strong> - Al-Azeem
+                    (M, 33) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kanna Veedu</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family6')">
+                    <div>
+                        <strong>#6. shamsudeen</strong> - 028/0 (jaffar manzil pallimukku)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            10 members | 0.59% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon6">▼</span>
+                </div>
+                <div class="family-members" id="family6">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 9, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>10</strong> - shamsudeen
+                    (M, 62) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 janmathil kizhakkethil vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>14</strong> - osila
+                    (F, 60) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 janmathil kizhakkethil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>25</strong> - dileep
+                    (M, 53) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 jafffar manzil pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>56</strong> - shamna
+                    (F, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 janmathil kizhakkethil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>59</strong> - thahira beevi
+                    (F, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 jaffar manzil pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>63</strong> - shamon
+                    (M, 38) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 janmatthil kizhakethil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>68</strong> - surumi s
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 janmatthil kizhakkethi</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>81</strong> - anandan n
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 jasafa villa sreevilasam nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>107</strong> - thasli t dileep
+                    (F, 24) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 jafar manzil pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>131</strong> - al ameen t dileep
+                    (M, 22) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 jaffar manzil pallimukku</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family7')">
+                    <div>
+                        <strong>#7. Subaida</strong> - 028/830 (Subai Cottage)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            10 members | 0.59% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon7">▼</span>
+                </div>
+                <div class="family-members" id="family7">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 10</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>988</strong> - Subaida
+                    (F, 67) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Subai Cottage</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>989</strong> - Maheen
+                    (M, 56) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Suba Quarters</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>990</strong> - Salarjan
+                    (M, 47) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Subaikwattezhs</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>991</strong> - Shemi
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Subaikwattej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>992</strong> - Nejeeb
+                    (M, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Subai Cottage</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>993</strong> - Fathima
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Subaikottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>994</strong> - Shakkeela
+                    (F, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Subaikottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>995</strong> - Hafaseena
+                    (F, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Subaikottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>996</strong> - Muhammed Azahrudeen
+                    (M, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Subai Cottage</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>997</strong> - Muhammed Haris M
+                    (M, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Subai Cottage</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family8')">
+                    <div>
+                        <strong>#8. rajamani</strong> - 028/0 (puthenvayalil kizhakethil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            9 members | 0.53% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon8">▼</span>
+                </div>
+                <div class="family-members" id="family8">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 5, Hindu: 4</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>13</strong> - rajamani
+                    (F, 60) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 puthenvayalil kizhakethil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>46</strong> - muhammed rafeek a
+                    (M, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 puthenvilayil vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>49</strong> - sajeena
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 puthuveedu iqbal nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>66</strong> - raju v
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 puthenvayalil kizhakethil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>90</strong> - aswanth babu
+                    (M, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 puthenpurayil veedu vadakkevila</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>105</strong> - adithya b
+                    (F, 24) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 puthenpurayilveedu mahathma nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>108</strong> - hajas sulfi s
+                    (M, 24) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 puthuveedu pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>133</strong> - swaliha sulfi
+                    (F, 22) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 puthen veedu pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>135</strong> - AMINA B
+                    (F, 20) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 PUTHENPURAYIL IQUBAL NAGAR 61</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family9')">
+                    <div>
+                        <strong>#9. Usaibabeevi</strong> - 033/246 (Naduvilazhakathu Padinjattathil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            9 members | 0.53% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon9">▼</span>
+                </div>
+                <div class="family-members" id="family9">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 9</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1359</strong> - Usaibabeevi
+                    (F, 70) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1360</strong> - Asanarukunj
+                    (M, 69) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhakathu Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1363</strong> - Navas
+                    (M, 51) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikath Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1365</strong> - Mujeeb
+                    (M, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhakathu Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1367</strong> - Mubeena
+                    (F, 43) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhakathu Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1370</strong> - Moominath
+                    (F, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhakathu Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1372</strong> - Navas
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikath Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1374</strong> - Ahammad Kabeer
+                    (M, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikathu Padinjattathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1376</strong> - Rah Math
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikathu Padinjattathil</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family10')">
+                    <div>
+                        <strong>#10. Sainaba</strong> - 028/435 (Akkaravila-)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            9 members | 0.53% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon10">▼</span>
+                </div>
+                <div class="family-members" id="family10">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 5, Hindu: 4</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>276</strong> - Sainaba
+                    (F, 72) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila-</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>279</strong> - Nizarudeen
+                    (M, 48) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila-</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>280</strong> - Yamuna
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>281</strong> - Amina Beevi
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila Vayalil Puthen Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>282</strong> - Shobitha
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 AkkaravilaVayalilPuthenveedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>283</strong> - Sindhu
+                    (F, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila Santhosh Bhavan</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>284</strong> - Anooj Krishnan
+                    (M, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila Vayalil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>285</strong> - Riyas
+                    (M, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 AkkaravilaVayalilPuthenveedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>288</strong> - Rinshad
+                    (M, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalil Puthen Veedu</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family11')">
+                    <div>
+                        <strong>#11. Abdul Jaleel</strong> - 033/245 (Puthanpuraveed)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.47% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon11">▼</span>
+                </div>
+                <div class="family-members" id="family11">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1350</strong> - Abdul Jaleel
+                    (M, 80) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1351</strong> - Arifa Beevi
+                    (F, 69) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1352</strong> - Sunil Deth
+                    (M, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1353</strong> - Ajeeb
+                    (M, 47) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1354</strong> - Shahna
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1355</strong> - Saleena
+                    (F, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1356</strong> - Sheeba
+                    (F, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthenpura</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1357</strong> - Najeeb
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpuraveed</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family12')">
+                    <div>
+                        <strong>#12. Sushama</strong> - 028/0 (thottathil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.47% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon12">▼</span>
+                </div>
+                <div class="family-members" id="family12">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Hindu: 5, Muslim: 3</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>2</strong> - Sushama
+                    (F, 73) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 thottathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>17</strong> - RAHEEMA BEEVI
+                    (F, 56) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 THODIYIL THEKKATHIL</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>42</strong> - riyas
+                    (M, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 thodiyilveedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>44</strong> - Lisa
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 thottathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>57</strong> - binsha
+                    (F, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 thoppil veedu pallimukku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>87</strong> - meera sivakumar
+                    (F, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 thottathil veedu manakkad</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>96</strong> - nadarsha n s
+                    (M, 26) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 thahira manzil iqbal nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>106</strong> - sachin s
+                    (M, 24) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 thevalazhikathuveedu akkaravila nagar</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family13')">
+                    <div>
+                        <strong>#13. Abdul Majeed</strong> - 028/779 (Nasarulla Manzil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.47% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon13">▼</span>
+                </div>
+                <div class="family-members" id="family13">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 8</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>921</strong> - Abdul Majeed
+                    (M, 77) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Nasarulla Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>922</strong> - Ayishaa
+                    (F, 68) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Nasarulla Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>923</strong> - Nasarullah
+                    (M, 51) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nasarullah Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>924</strong> - Safarulla
+                    (M, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nasarulla Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>925</strong> - Amanulla
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nasarlamansil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>926</strong> - Habeebullah
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nassarulla Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>927</strong> - Sabeebulla
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nasarullamansil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>928</strong> - Ameena
+                    (F, 38) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nasarulla Manzil</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family14')">
+                    <div>
+                        <strong>#14. Yahiyakoya</strong> - 033/217 (Puthuveettil Kizhakkathil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.47% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon14">▼</span>
+                </div>
+                <div class="family-members" id="family14">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 8</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1255</strong> - Yahiyakoya
+                    (M, 61) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1256</strong> - Nadeera
+                    (F, 58) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1257</strong> - Noushad
+                    (M, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1258</strong> - Shajahan
+                    (M, 44) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1259</strong> - Babu
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1260</strong> - Majida
+                    (F, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1261</strong> - Shanu
+                    (M, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthu Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1262</strong> - Shahina
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family15')">
+                    <div>
+                        <strong>#15. Fathimuth</strong> - 033/208 (Thengazhikam)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon15">▼</span>
+                </div>
+                <div class="family-members" id="family15">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 6, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1194</strong> - Fathimuth
+                    (F, 72) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1195</strong> - Shahida
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1197</strong> - Rajoola
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1198</strong> - Nazar
+                    (M, 44) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1199</strong> - Nizam
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1201</strong> - Biju
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1202</strong> - Rejila
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thengazhikath Veedu</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family16')">
+                    <div>
+                        <strong>#16. Shamsudeen</strong> - 033/214 (Puthuveettil Kizhakkathil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon16">▼</span>
+                </div>
+                <div class="family-members" id="family16">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1243</strong> - Shamsudeen
+                    (M, 65) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1244</strong> - Subaida Beevi
+                    (F, 63) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1245</strong> - Majida Beevi
+                    (F, 57) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1246</strong> - Savad
+                    (M, 38) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1247</strong> - Riyas
+                    (M, 38) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhakkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1248</strong> - Amina
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil Kizhackathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1249</strong> - Shamnad
+                    (M, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Puthuveettil</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family17')">
+                    <div>
+                        <strong>#17. Abdal Jaleel</strong> - 033/244 (Puthanpurathekkathil)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon17">▼</span>
+                </div>
+                <div class="family-members" id="family17">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1342</strong> - Abdal Jaleel
+                    (M, 66) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Puthenpura Thekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1343</strong> - Noorjahan
+                    (F, 57) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthenpura Thekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1344</strong> - Badarudeen
+                    (M, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthenpura Thekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1346</strong> - Shakkariya
+                    (M, 38) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpurathekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1347</strong> - Sajeena
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpurathekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1348</strong> - Shameera
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Puthanpurathekkathil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1349</strong> - Raseena
+                    (F, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Puthen Purayil</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family18')">
+                    <div>
+                        <strong>#18. Santha</strong> - 028/436 (Akkaravilavayalilveed)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon18">▼</span>
+                </div>
+                <div class="family-members" id="family18">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Hindu: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Hindu)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>289</strong> - Santha
+                    (F, 68) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalilveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>290</strong> - Sudhakaran
+                    (M, 56) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalilveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>291</strong> - Chandran
+                    (M, 53) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>292</strong> - Valsala
+                    (F, 50) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalilveed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>293</strong> - Sooraj
+                    (M, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila Vayalilputhenveedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>294</strong> - Soorya
+                    (F, 32) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravila Vayalil Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>295</strong> - Vishnu Chandran
+                    (M, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Akkaravilavayalilveedu</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family19')">
+                    <div>
+                        <strong>#19. Nazar</strong> - 033/328 (Thoppil Veedu)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon19">▼</span>
+                </div>
+                <div class="family-members" id="family19">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1575</strong> - Nazar
+                    (M, 59) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1576</strong> - Shameema
+                    (F, 57) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1581</strong> - AAJA MUHAMMED JASIR
+                    (F, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 THOPPIL VEEDU</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1582</strong> - Muhammed Jasir
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1583</strong> - Muhammed Yassar
+                    (M, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil Veedu</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1585</strong> - Ancy franklin
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil veed</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1586</strong> - Firos
+                    (M, 33) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Thoppil Veed</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family20')">
+                    <div>
+                        <strong>#20. Shajahan</strong> - 033/345 (Naduvilazhikam)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-1158082)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.41% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon20">▼</span>
+                </div>
+                <div class="family-members" id="family20">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Muslim: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Muslim)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>1628</strong> - Shajahan
+                    (M, 55) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Nadeelazhikam Saidali Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1629</strong> - Ayyub
+                    (M, 50) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1630</strong> - Sabeelath
+                    (F, 48) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nadeelazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1631</strong> - Najimi
+                    (F, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nadeelazhikam Saidali Manzil</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1632</strong> - Saji
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1633</strong> - Naufal
+                    (M, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Nadiyilazhikam</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>1634</strong> - Mouhamad Nahiyan
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Naduvilazhikam</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">5. CROSS-DEMOGRAPHIC ANALYSIS</h2>
+
+            <h3 class="subsection-title">5.1 Strategic Demographic Clusters</h3>
+            <p>Multi-dimensional demographic segments ranked by strategic value:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Demographic Cluster</th>
+                        <th>Voters</th>
+                        <th>% of Electorate</th>
+                        <th>Avg Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>1</td>
+                <td>Muslim Young Adults Women</td>
+                <td>260</td>
+                <td>15.38%</td>
+                <td>41.5</td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>Muslim Young Adults Men</td>
+                <td>227</td>
+                <td>13.42%</td>
+                <td>42.1</td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td>Muslim Middle Age Men</td>
+                <td>166</td>
+                <td>9.82%</td>
+                <td>56.4</td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td>Muslim Youth Women</td>
+                <td>163</td>
+                <td>9.64%</td>
+                <td>27.9</td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td>Muslim Youth Men</td>
+                <td>162</td>
+                <td>9.58%</td>
+                <td>28.4</td>
+            </tr>
+            
+            <tr>
+                <td>6</td>
+                <td>Muslim Middle Age Women</td>
+                <td>144</td>
+                <td>8.52%</td>
+                <td>55.7</td>
+            </tr>
+            
+            <tr>
+                <td>7</td>
+                <td>Hindu Young Adults Women</td>
+                <td>72</td>
+                <td>4.26%</td>
+                <td>42.7</td>
+            </tr>
+            
+            <tr>
+                <td>8</td>
+                <td>Hindu Young Adults Men</td>
+                <td>55</td>
+                <td>3.25%</td>
+                <td>42.1</td>
+            </tr>
+            
+            <tr>
+                <td>9</td>
+                <td>Hindu Middle Age Women</td>
+                <td>47</td>
+                <td>2.78%</td>
+                <td>56.1</td>
+            </tr>
+            
+            <tr>
+                <td>10</td>
+                <td>Hindu Middle Age Men</td>
+                <td>45</td>
+                <td>2.66%</td>
+                <td>55.7</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>The Muslim population is heavily concentrated in the middle-aged segments, particularly females aged 30-44 (19.9% of Muslims, 15.2% of total), followed by males in the same age group and senior males, indicating a strong strategic advantage in mobilizing these cohorts. Hindus show a more balanced spread across age and gender, but senior females (17.8% of Hindus, 3.8% of total) stand out as a key segment, while Christians have very low representation and no dominant subgroup. An unexpected pattern is the relatively high proportion of young Muslim females compared to young males, suggesting increased engagement or presence among younger women in this group.</p>
+                </div>
+                
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Application:</div>
+                <p>These clusters represent the most effective ways to segment your outreach. Focus on the top 3-5 clusters for maximum efficiency. Each cluster requires tailored messaging that speaks to their specific demographic identity.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">6. GEOGRAPHIC & REGIONAL ANALYSIS</h2>
+
+            <h3 class="subsection-title">6.1 Regional Demographics by House Numbers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>House Range</th>
+                        <th>Voters</th>
+                        <th>% Total</th>
+                        <th>Dominant Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>Low Numbers</td>
+                    <td>0-1158082</td>
+                    <td>1,690</td>
+                    <td>99.9%</td>
+                    <td>Muslim (76.4%)</td>
+                </tr>
+                
+                <tr>
+                    <td>High Numbers</td>
+                    <td>2316165-3474248</td>
+                    <td>1</td>
+                    <td>0.1%</td>
+                    <td>Muslim (100.0%)</td>
+                </tr>
+                
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">6.2 Religious Enclaves (70%+ Concentration)</h3>
+            
+                <div class="enclave-card">
+                    <strong>Houses 300-350</strong>: Muslim stronghold
+                    (96.6% - 118 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 700-750</strong>: Muslim stronghold
+                    (92.5% - 40 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 200-250</strong>: Muslim stronghold
+                    (91.8% - 233 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 250-300</strong>: Muslim stronghold
+                    (86.8% - 159 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 650-700</strong>: Muslim stronghold
+                    (86.7% - 45 voters)
+                </div>
+                
+
+            <h3 class="subsection-title">6.3 Mixed/Swing Areas (High Diversity)</h3>
+            
+                <div class="mixed-area-card">
+                    <strong>Houses 400-450</strong>: Diverse area
+                    <br><span style="font-size: 14px;">Muslim: 49.6%, Hindu: 45.2%, Christian: 5.2%</span>
+                    <br><em>HIGH - Swing area with diverse demographics</em>
+                </div>
+                
+                <div class="mixed-area-card">
+                    <strong>Houses 800-850</strong>: Diverse area
+                    <br><span style="font-size: 14px;">Muslim: 51.2%, Hindu: 45.0%, Christian: 3.8%</span>
+                    <br><em>HIGH - Swing area with diverse demographics</em>
+                </div>
+                
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>The data reveals a strong geographic concentration of voters in the "Low Numbers" region, which accounts for 99.9% of all voters and is predominantly Muslim (76.4%), with some Hindu (21.3%) and Christian (2.3%) presence. Most house clusters and religious enclaves are overwhelmingly Muslim, especially in ranges like 300-350 and 700-750, where Muslim dominance exceeds 90%, indicating tight religious clustering and low diversity in these zones. However, mixed-diverse swing areas such as 400-450 and 800-850 show near-equal Muslim and Hindu representation and higher diversity indices (0.53–0.55), making them strategically important for electoral campaigns due to their potential for shifting outcomes.</p>
+                </div>
+                
+
+            <div class="recommendation-box">
+                <h4>Geographic Strategy:</h4>
+                <ul>
+                    <li>Target mixed areas with inclusive, cross-community messaging</li>
+                    <li>In enclaves, focus on mobilization and turnout rather than persuasion</li>
+                    <li>Use house number clustering for efficient door-to-door campaigns</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">7. PATTERN DETECTION & ANOMALIES</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">10</div>
+                    <div class="metric-label">Patterns Detected</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">9</div>
+                    <div class="metric-label">High Priority</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Medium Priority</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">7.1 Critical Patterns & Anomalies</h3>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>High concentration in 35-50 age group: 625 voters (37.0%)</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> Age-specific messaging will be highly effective</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 028/0 (jaffar manzil pallimukku): 10 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 028/0 (kavitha vadakkevila): 12 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 028/0 (sachin bhavan akkaravila nagar): 15 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 028/744 (Kannaveed): 12 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+
+            
+            <h3 class="subsection-title">7.2 Mixed-Faith Households</h3>
+            <p>Found Found 31 mixed-faith households (4.2% of all households)</p>
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Importance:</div>
+                <p>Significant interfaith mixing indicates openness to cross-community appeal</p>
+            </div>
+            
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>The unusually high concentration of voters aged 35-50 suggests that this electorate is skewed toward mid-career adults, likely influencing campaign messaging and issue prioritization toward economic stability, family welfare, and job security. The presence of exceptionally large households at specific addresses could indicate communal living arrangements or data irregularities; strategically, these locations may be high-impact targets for door-to-door outreach, but they also warrant scrutiny for potential voter clustering or registration anomalies. Overall, these outliers highlight both opportunities for tailored engagement and a need for careful monitoring to ensure the integrity of voter data.</p>
+                </div>
+                
+
+            <div class="action-list">
+                <h4>Action Items from Pattern Analysis:</h4>
+                <ol>
+                    <li>Review high-severity patterns and adjust strategy accordingly</li>
+                    <li>Address identified demographic gaps or imbalances</li>
+                    <li>Leverage unusual patterns as strategic opportunities</li>
+                    <li>Monitor mixed-faith households for swing potential</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">8. WINNING STRATEGY FOR THIS DISTRICT</h2>
+
+            <h3 class="subsection-title">Scenario: Muslim Consolidation Strategy</h3>
+            <p><strong>Formula:</strong> Consolidate Muslim base + Secular appeal</p>
+
+            <div class="recommendation-box">
+                <h4>Requirements:</h4>
+                <ul>
+                    
+            <li><strong>Muslim Consolidation:</strong> 1,292 voters
+            (need 80% = 1,033 votes)</li>
+            
+            <li><strong>Secular Support:</strong> 399 voters
+            (need 35% = 139 votes)</li>
+            
+                </ul>
+                <p><strong>Expected Total:</strong> 1,173 votes (69.4% vote share)</p>
+                <p><strong>Margin of Victory:</strong> 327 votes</p>
+            </div>
+
+            <div class="action-list">
+                <h4>Key Actions:</h4>
+                <ol>
+                    <li>Consolidate Muslim vote bank through community leaders</li><li>Women-centric campaign with SHG meetings and welfare focus</li><li>Door-to-door campaign for large households (5+ voters)</li><li>WhatsApp groups covering 60% of 18-35 demographic</li><li>Community meetings with 50+ attendance each</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">9. PRIORITY TARGET DEMOGRAPHICS (Rank Ordered)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Demographic</th>
+                        <th>Count</th>
+                        <th>Why Important</th>
+                        <th>How to Reach</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td><strong>1</strong></td>
+                <td>Middle-aged women (30-50)</td>
+                <td>432 (25.5%)</td>
+                <td>Largest persuadable group, family decision-makers</td>
+                <td>Women-centric rallies, SHG engagement, welfare promises</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2</strong></td>
+                <td>Large households (5+ voters)</td>
+                <td>45 (6.1%)</td>
+                <td>One converted family = 5-8 votes</td>
+                <td>Personal visits, respected community member introductions</td>
+            </tr>
+            
+            <tr>
+                <td><strong>3</strong></td>
+                <td>Young voters (18-35)</td>
+                <td>469 (27.7%)</td>
+                <td>Aspirational, persuadable, digital-savvy</td>
+                <td>Employment promises, social media, youth leaders</td>
+            </tr>
+            
+            <tr>
+                <td><strong>4</strong></td>
+                <td>Senior citizens (60+)</td>
+                <td>320 (18.9%)</td>
+                <td>High turnout, consistent voters</td>
+                <td>Healthcare, pension, respect for elders</td>
+            </tr>
+            
+            <tr>
+                <td><strong>5</strong></td>
+                <td>First-time voters (18-21)</td>
+                <td>30 (1.8%)</td>
+                <td>Malleable, high energy, future base</td>
+                <td>Campus outreach, social media, youth icons</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">10. FINAL RECOMMENDATIONS</h2>
+
+            <div class="action-list">
+                <h3 class="subsection-title">Top 5 Actions for MSM Auditorium,  Post Office Junction</h3>
+                <ol>
+                    <li><strong>Action 1:</strong> Consolidate Muslim vote bank through community leaders</li><li><strong>Action 2:</strong> Women-centric campaign with SHG meetings and welfare focus</li><li><strong>Action 3:</strong> Door-to-door campaign for large households (5+ voters)</li><li><strong>Action 4:</strong> WhatsApp groups covering 60% of 18-35 demographic</li><li><strong>Action 5:</strong> Community meetings with 50+ attendance each</li>
+                </ol>
+            </div>
+
+            <div class="recommendation-box">
+                <h3 class="subsection-title">Success Metrics</h3>
+                <ul>
+                    <li>100% personal contact (5+ voter houses)</li><li>60% coverage of 18-35 age group</li><li>3+ SHG meetings with 30+ attendance</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">Turnout Targets:</h4>
+                <ul>
+                    <li><strong>Minimum required:</strong> 65% (1,099 voters)</li>
+                    <li><strong>Target:</strong> 75% (1,268 voters)</li>
+                    <li><strong>Stretch goal:</strong> 85% (1,437 voters)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 3px solid #2c3e50;">
+            <h3>Report End</h3>
+            <p><strong>MSM Auditorium,  Post Office Junction:</strong> 1,691 voters | Generated 2025-11-09</p>
+        </div>
+        
+
+    <script>
+        function toggleFamily(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById('icon' + id.replace('family', ''));
+
+            if (element.classList.contains('expanded')) {
+                element.classList.remove('expanded');
+                icon.classList.remove('rotated');
+            } else {
+                element.classList.add('expanded');
+                icon.classList.add('rotated');
+            }
+        }
+    </script>
+</body>
+</html>

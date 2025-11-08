@@ -1,0 +1,658 @@
+{
+  "metadata": {
+    "ward_code": "010",
+    "ward_name": "ANCHALUMMOODU EAST",
+    "station_number": "001",
+    "station_name": "Thrikkadavoor LPS, New Building, East Portion, C K P Jn.",
+    "total_voters": 1374,
+    "analysis_timestamp": "2025-11-09T04:47:56.476934",
+    "data_file": "/Users/nikzart/Developer/aislop-server/output_with_religion/010_-_ANCHALUMMOODU_EAST/001_-_Thrikkadavoor_LPS_New_Building_East_Portion_C_K_P_Jn..csv"
+  },
+  "demographics": {
+    "basic_stats": {
+      "total_voters": 1374,
+      "gender_distribution": {
+        "male_count": 631,
+        "female_count": 743,
+        "male_percentage": 45.92,
+        "female_percentage": 54.08,
+        "gender_ratio": 1177
+      },
+      "age_statistics": {
+        "mean_age": 45.5,
+        "median_age": 44.0,
+        "min_age": 18,
+        "max_age": 108,
+        "age_groups": {
+          "youth_18_30": 290,
+          "middle_31_60": 829,
+          "senior_60_plus": 255,
+          "first_time_18_21": 45,
+          "elderly_65_plus": 187
+        },
+        "age_group_percentages": {
+          "youth_18_30": 21.1,
+          "middle_31_60": 60.3,
+          "senior_60_plus": 18.6,
+          "first_time_18_21": 3.3,
+          "elderly_65_plus": 13.6
+        },
+        "generations": {
+          "gen_z_18_29": 268,
+          "millennials_30_44": 422,
+          "gen_x_45_59": 399,
+          "boomers_60_74": 229,
+          "silent_75_plus": 56
+        },
+        "generation_percentages": {
+          "gen_z_18_29": 19.5,
+          "millennials_30_44": 30.7,
+          "gen_x_45_59": 29.0,
+          "boomers_60_74": 16.7,
+          "silent_75_plus": 4.1
+        }
+      },
+      "religion_distribution": {
+        "distribution": {
+          "hindu": 1304,
+          "christian": 9,
+          "muslim": 61
+        },
+        "percentages": {
+          "hindu_percentage": 94.91,
+          "christian_percentage": 0.66,
+          "muslim_percentage": 4.44
+        },
+        "diversity_index": 0.097,
+        "majority_religion": "Hindu"
+      },
+      "house_statistics": {
+        "total_houses": 739,
+        "avg_voters_per_house": 1.86,
+        "max_voters_in_house": 14,
+        "min_voters_in_house": 1,
+        "single_voter_houses": 420,
+        "large_houses_5_plus": 40,
+        "house_size_distribution": {
+          "1_person": 420,
+          "2_3_persons": 245,
+          "4_5_persons": 59,
+          "6_plus_persons": 15
+        },
+        "house_name_patterns": {
+          "bhavan_bhavanam": 119,
+          "villa_nivas": 40,
+          "mandiram_vihar": 20,
+          "manzil_house": 12,
+          "traditional": 91,
+          "other": 457
+        }
+      }
+    },
+    "cross_tabulations": {
+      "religion_gender": {
+        "F": {
+          "Christian": 5,
+          "Hindu": 712,
+          "Muslim": 26
+        },
+        "M": {
+          "Christian": 4,
+          "Hindu": 592,
+          "Muslim": 35
+        }
+      },
+      "religion_age": {
+        "Youth_18-30": {
+          "Christian": 2,
+          "Hindu": 271,
+          "Muslim": 17
+        },
+        "Middle_31-60": {
+          "Christian": 6,
+          "Hindu": 783,
+          "Muslim": 40
+        },
+        "Senior_60+": {
+          "Christian": 1,
+          "Hindu": 249,
+          "Muslim": 4
+        }
+      },
+      "gender_age": {
+        "Youth_18-30": {
+          "F": 154,
+          "M": 136
+        },
+        "Middle_31-60": {
+          "F": 447,
+          "M": 382
+        },
+        "Senior_60+": {
+          "F": 142,
+          "M": 112
+        }
+      }
+    },
+    "population_pyramid": {
+      "age_groups": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24",
+        "25-29",
+        "30-34",
+        "35-39",
+        "40-44",
+        "45-49",
+        "50-54",
+        "55-59",
+        "60-64",
+        "65-69",
+        "70-74",
+        "75-79",
+        "80-84",
+        "85-89",
+        "90-94",
+        "95-99"
+      ],
+      "male": [
+        0,
+        0,
+        0,
+        14,
+        41,
+        71,
+        68,
+        69,
+        63,
+        59,
+        59,
+        56,
+        53,
+        38,
+        19,
+        11,
+        8,
+        1,
+        0,
+        0
+      ],
+      "female": [
+        0,
+        0,
+        0,
+        10,
+        50,
+        82,
+        70,
+        77,
+        75,
+        84,
+        82,
+        59,
+        45,
+        38,
+        36,
+        19,
+        11,
+        3,
+        1,
+        1
+      ]
+    },
+    "electoral_insights": {
+      "first_time_voters": {
+        "count": 45,
+        "percentage": 3.28,
+        "gender_split": {
+          "M": 23,
+          "F": 22
+        },
+        "religion_split": {
+          "Hindu": 41,
+          "Muslim": 4
+        }
+      },
+      "senior_voters": {
+        "count": 187,
+        "percentage": 13.61,
+        "gender_split": {
+          "F": 109,
+          "M": 78
+        },
+        "religion_split": {
+          "Hindu": 185,
+          "Muslim": 2
+        }
+      },
+      "vote_banks": [
+        {
+          "type": "religion",
+          "group": "Hindu",
+          "size": 1304,
+          "percentage": 94.91
+        },
+        {
+          "type": "age",
+          "group": "Youth (18-35)",
+          "size": 432,
+          "percentage": 31.44
+        }
+      ],
+      "swing_demographics": {
+        "middle_aged_35_55": {
+          "count": 593,
+          "percentage": 43.16
+        }
+      }
+    }
+  },
+  "family_analysis": {
+    "household_analysis": {
+      "total_houses": 739,
+      "average_household_size": 1.86,
+      "median_household_size": 1.0,
+      "largest_household": {
+        "name": "Pulleri",
+        "size": 14
+      },
+      "size_distribution": {
+        "single_person": 420,
+        "couple_2": 169,
+        "small_family_3_4": 110,
+        "medium_family_5_6": 29,
+        "large_family_7_plus": 11
+      },
+      "size_percentages": {
+        "single_person": 56.8,
+        "couple_2": 22.9,
+        "small_family_3_4": 14.9,
+        "medium_family_5_6": 3.9,
+        "large_family_7_plus": 1.5
+      },
+      "multi_family_houses": 11,
+      "multi_family_examples": [
+        {
+          "house": "Idayath",
+          "total_members": 7,
+          "unique_guardians": 6
+        },
+        {
+          "house": "Kochuveettil Panayil",
+          "total_members": 11,
+          "unique_guardians": 9
+        },
+        {
+          "house": "Krishnagiri",
+          "total_members": 8,
+          "unique_guardians": 5
+        },
+        {
+          "house": "Madathil Puthan Veed",
+          "total_members": 7,
+          "unique_guardians": 6
+        },
+        {
+          "house": "PULLERIL VEEDU",
+          "total_members": 8,
+          "unique_guardians": 8
+        }
+      ]
+    },
+    "family_structures": {
+      "total_families": 826,
+      "average_family_size": 1.69,
+      "family_types": {
+        "nuclear": 733,
+        "joint": 25,
+        "single": 68
+      },
+      "family_type_percentages": {
+        "nuclear": 88.7,
+        "joint": 3.0,
+        "single": 8.2
+      },
+      "nuclear_families": 733,
+      "joint_families": 25,
+      "extended_families": 0,
+      "single_person_households": 68
+    },
+    "guardian_patterns": {
+      "total_unique_guardians": 794,
+      "average_dependents_per_guardian": 1.73,
+      "max_dependents": {
+        "guardian": "Sreekumar",
+        "count": 19
+      },
+      "single_dependent_guardians": 531,
+      "multi_dependent_guardians": 263,
+      "influential_guardians": [
+        {
+          "name": "Sreekumar",
+          "dependent_count": 19,
+          "houses": 12
+        },
+        {
+          "name": "Balakrishnapilla",
+          "dependent_count": 14,
+          "houses": 10
+        },
+        {
+          "name": "Madhavan Pilla",
+          "dependent_count": 13,
+          "houses": 11
+        },
+        {
+          "name": "Gopinathan Pilla",
+          "dependent_count": 12,
+          "houses": 8
+        },
+        {
+          "name": "Gopalakrishnapilla",
+          "dependent_count": 11,
+          "houses": 7
+        },
+        {
+          "name": "Radhakrishnapilla",
+          "dependent_count": 10,
+          "houses": 7
+        },
+        {
+          "name": "Anilkumar",
+          "dependent_count": 10,
+          "houses": 10
+        },
+        {
+          "name": "Janardhanan Pilla",
+          "dependent_count": 10,
+          "houses": 5
+        },
+        {
+          "name": "Ramachandran Pilla",
+          "dependent_count": 9,
+          "houses": 7
+        },
+        {
+          "name": "Gopalapilla",
+          "dependent_count": 9,
+          "houses": 8
+        }
+      ],
+      "guardian_gender_distribution": {
+        "male": 34,
+        "female": 0,
+        "unknown": 16
+      }
+    },
+    "generational_analysis": {
+      "multi_generational_houses": 135,
+      "multi_gen_percentage": 18.3,
+      "average_age_gap_in_houses": 20.1,
+      "max_age_gap_in_house": 62.0,
+      "multi_gen_examples": [
+        {
+          "house": "Vishnunivas",
+          "age_range": 62,
+          "generations": 3,
+          "member_count": 5
+        },
+        {
+          "house": "Sreelakshmi",
+          "age_range": 60,
+          "generations": 2,
+          "member_count": 4
+        },
+        {
+          "house": "Ushas",
+          "age_range": 52,
+          "generations": 3,
+          "member_count": 6
+        },
+        {
+          "house": "Pulleri",
+          "age_range": 50,
+          "generations": 3,
+          "member_count": 14
+        },
+        {
+          "house": "Pulleriyil",
+          "age_range": 50,
+          "generations": 2,
+          "member_count": 11
+        }
+      ]
+    },
+    "inter_religious_families": {
+      "total_inter_religious_houses": 10,
+      "percentage_of_houses": 1.35,
+      "examples": [
+        {
+          "house": "Pulleril",
+          "total_members": 11,
+          "religions": {
+            "Hindu": 10,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Pulleril Melathil",
+          "total_members": 5,
+          "religions": {
+            "Muslim": 3,
+            "Hindu": 2
+          },
+          "primary_religion": "Muslim",
+          "diversity": 2
+        },
+        {
+          "house": "Pulleril Veed",
+          "total_members": 9,
+          "religions": {
+            "Hindu": 7,
+            "Muslim": 2
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Pulleril Veedu",
+          "total_members": 5,
+          "religions": {
+            "Hindu": 4,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Santhosh Bhavanam",
+          "total_members": 2,
+          "religions": {
+            "Christian": 1,
+            "Hindu": 1
+          },
+          "primary_religion": "Christian",
+          "diversity": 2
+        },
+        {
+          "house": "VILAYILAZHIKATHU VEEDU",
+          "total_members": 2,
+          "religions": {
+            "Hindu": 1,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "VIRALIL THEKKATHIL",
+          "total_members": 2,
+          "religions": {
+            "Hindu": 1,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Vilavilazhikathuveed",
+          "total_members": 2,
+          "religions": {
+            "Hindu": 1,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Viralil Thekkathil",
+          "total_members": 2,
+          "religions": {
+            "Hindu": 1,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        },
+        {
+          "house": "Viralithackathil",
+          "total_members": 7,
+          "religions": {
+            "Hindu": 6,
+            "Muslim": 1
+          },
+          "primary_religion": "Hindu",
+          "diversity": 2
+        }
+      ],
+      "integration_index": 0.9
+    }
+  },
+  "kinship_networks": {
+    "potential_sibling_groups": 92,
+    "largest_sibling_group": {
+      "guardian": "Gopalakrishnapillai",
+      "potential_siblings": [
+        "Soumya Krishnan",
+        "Remya",
+        "Ranjith",
+        "Prakash"
+      ],
+      "count": 4,
+      "age_range": 13
+    },
+    "identified_parent_child_pairs": 231,
+    "sibling_examples": [
+      {
+        "guardian": "AJITH KUMAR C V",
+        "potential_siblings": [
+          "ADITHYA P",
+          "AISWARYA P"
+        ],
+        "count": 2,
+        "age_range": 2
+      },
+      {
+        "guardian": "ANILKUMAR",
+        "potential_siblings": [
+          "ANJANA L",
+          "ABIRAM A"
+        ],
+        "count": 2,
+        "age_range": 3
+      },
+      {
+        "guardian": "ANILKUMAR. A",
+        "potential_siblings": [
+          "KASINATH. A",
+          "KAILAS NATH. A"
+        ],
+        "count": 2,
+        "age_range": 0
+      },
+      {
+        "guardian": "ARAVINDAN",
+        "potential_siblings": [
+          "AKHIL ARAVINDAN",
+          "ANAKHA ARAVIND"
+        ],
+        "count": 2,
+        "age_range": 4
+      },
+      {
+        "guardian": "Abdul Mehaboob A",
+        "potential_siblings": [
+          "Ajmal A",
+          "Asif A"
+        ],
+        "count": 2,
+        "age_range": 1
+      }
+    ],
+    "parent_child_examples": [
+      {
+        "parent": "Rajamohanan Pilla",
+        "child": "SREELEKSHMI M",
+        "age_difference": 34
+      },
+      {
+        "parent": "Mahesh",
+        "child": "Adwaith M",
+        "age_difference": 25
+      },
+      {
+        "parent": "SUBAIRKUTTY",
+        "child": "SANIF SUBAIR",
+        "age_difference": 37
+      },
+      {
+        "parent": "Pandi",
+        "child": "Muthuganesan",
+        "age_difference": 35
+      },
+      {
+        "parent": "Sudheer S",
+        "child": "Adarsh Chand",
+        "age_difference": 30
+      }
+    ]
+  },
+  "unique_characteristics": {
+    "religion_dominance": "Hindu dominated (94.91%)",
+    "low_christian": "Very few Christian voters (0.66%)",
+    "low_muslim": "Very few Muslim voters (4.44%)",
+    "female_majority": "Strong female majority (ratio: 1177)",
+    "small_families": "Small household sizes (avg: 1.86)",
+    "multi_family_housing": "11 multi-family houses",
+    "religious_integration": "10 inter-religious households"
+  },
+  "data_quality": {
+    "total_records": 1374,
+    "completeness": {
+      "Serial No.": 100.0,
+      "Name": 100.0,
+      "Guardian's Name": 100.0,
+      "OldWard No/ House No.": 100.0,
+      "House Name": 99.85,
+      "Gender / Age": 100.0,
+      "New SEC ID No.": 100.0,
+      "ward": 100.0,
+      "polling_station": 100.0,
+      "scrape_timestamp": 100.0,
+      "religion": 100.0,
+      "Gender": 100.0,
+      "Age": 100.0,
+      "age_group": 99.93,
+      "house_id": 100.0
+    },
+    "issues": [
+      "3 duplicate SEC IDs"
+    ],
+    "quality_score": 95,
+    "quality_grade": "Excellent"
+  }
+}

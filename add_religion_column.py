@@ -18,7 +18,7 @@ import logging
 import sqlite3
 import asyncio
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Set
 import pandas as pd
 from openai import AsyncAzureOpenAI
 
@@ -32,6 +32,63 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+
+def sanitize_ward_name(ward_text: str) -> str:
+    """
+    Sanitize ward name for folder naming.
+    Rules: Replace '/' and ' ' with '_'
+    """
+    return ward_text.replace('/', '_').replace(' ', '_')
+
+
+def sanitize_polling_station_name(ps_text: str) -> str:
+    """
+    Sanitize polling station name for CSV filename.
+    Rules: Replace '/' and ' ' with '_', remove '(', ')', and ','
+    """
+    return (ps_text.replace('/', '_')
+                   .replace(' ', '_')
+                   .replace('(', '')
+                   .replace(')', '')
+                   .replace(',', ''))
+
+
+def build_expected_csv_paths(polling_stations_map_path: str, input_dir: str) -> Set[Path]:
+    """
+    Build set of expected CSV file paths from polling_stations_map.json
+
+    Args:
+        polling_stations_map_path: Path to polling_stations_map.json
+        input_dir: Base input directory (e.g., 'output')
+
+    Returns:
+        Set of Path objects for expected CSV files
+    """
+    try:
+        with open(polling_stations_map_path, 'r') as f:
+            ps_map = json.load(f)
+
+        expected_paths = set()
+
+        for ward in ps_map.get('wards', []):
+            ward_text = ward.get('text', '')
+            ward_folder = sanitize_ward_name(ward_text)
+
+            for polling_station in ward.get('polling_stations', []):
+                ps_text = polling_station.get('text', '')
+                ps_filename = sanitize_polling_station_name(ps_text) + '.csv'
+
+                # Build full path
+                csv_path = Path(input_dir) / ward_folder / ps_filename
+                expected_paths.add(csv_path)
+
+        logger.info(f"Built {len(expected_paths)} expected CSV paths from polling stations map")
+        return expected_paths
+
+    except Exception as e:
+        logger.error(f"Error building expected CSV paths: {e}")
+        return set()
 
 
 class ProgressTracker:
@@ -422,11 +479,48 @@ async def main():
     predictor = ReligionPredictor(config, rate_limiter)
     batch_processor = BatchProcessor(config, progress_tracker, predictor)
 
-    # Find all CSV files
-    csv_files = list(Path(input_dir).rglob('*.csv'))
+    # Build expected CSV paths from polling_stations_map.json
+    polling_stations_map_path = 'polling_stations_map.json'
+
+    if not Path(polling_stations_map_path).exists():
+        logger.error(f"Polling stations map not found: {polling_stations_map_path}")
+        logger.error("Run discover_polling_stations.py first to generate the map")
+        return
+
+    expected_csv_paths = build_expected_csv_paths(polling_stations_map_path, input_dir)
+
+    if not expected_csv_paths:
+        logger.error("No expected CSV paths found in polling stations map")
+        return
+
+    # Find all CSV files in input directory
+    all_csv_files = set(Path(input_dir).rglob('*.csv'))
+
+    # Filter to only include files from polling_stations_map.json
+    csv_files = sorted(expected_csv_paths & all_csv_files)
     total_files = len(csv_files)
 
-    logger.info(f"Found {total_files} CSV files to process")
+    # Log statistics
+    missing_files = expected_csv_paths - all_csv_files
+    extra_files = all_csv_files - expected_csv_paths
+
+    logger.info(f"Expected CSV files from map: {len(expected_csv_paths)}")
+    logger.info(f"Found CSV files to process: {total_files}")
+
+    if missing_files:
+        logger.warning(f"Missing {len(missing_files)} expected CSV files (not yet scraped)")
+        for missing in sorted(missing_files)[:5]:  # Show first 5
+            logger.warning(f"  Missing: {missing.relative_to(input_dir)}")
+        if len(missing_files) > 5:
+            logger.warning(f"  ... and {len(missing_files) - 5} more")
+
+    if extra_files:
+        logger.info(f"Skipping {len(extra_files)} CSV files not in polling stations map (old data)")
+        for extra in sorted(extra_files)[:3]:  # Show first 3
+            logger.info(f"  Skipping: {extra.relative_to(input_dir)}")
+        if len(extra_files) > 3:
+            logger.info(f"  ... and {len(extra_files) - 3} more")
+
     logger.info(f"Output directory: {output_dir}")
     logger.info(f"OPTIMIZED: 25 voters per API call, 40 calls/min = 1000 voters/min")
 

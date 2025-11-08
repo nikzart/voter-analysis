@@ -1,6 +1,6 @@
 """
 Main Script to Generate Election Insights Reports for All Polling Stations
-Processes all 62 polling stations and creates comprehensive campaign reports
+Processes all 239 polling stations and creates comprehensive campaign reports
 """
 
 import pandas as pd
