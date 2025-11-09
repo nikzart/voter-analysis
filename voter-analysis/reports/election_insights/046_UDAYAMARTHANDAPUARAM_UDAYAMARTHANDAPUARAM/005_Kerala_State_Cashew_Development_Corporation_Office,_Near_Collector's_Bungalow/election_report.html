@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Insights Report - Kerala State Cashew Development Corporation Office, Near Collector's Bungalow</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            color: #333;
+        }
+
+        .report-header {
+            text-align: center;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .station-info {
+            font-size: 18px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .executive-summary {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .critical-finding {
+            background: #ffe4e1;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .classification-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+            margin: 5px 0;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin: 25px 0 15px 0;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+
+        .strategic-insight {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .insight-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #ecf0f1;
+        }
+
+        .priority-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .priority-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .priority-low {
+            color: #95a5a6;
+        }
+
+        .recommendation-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .action-list {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .action-list li {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .family-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .family-header {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .family-header:hover {
+            background: #e9ecef;
+        }
+
+        .family-members {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .family-members.expanded {
+            max-height: 2000px;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .member-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .member-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .report-title {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .family-members {
+                max-height: none !important;
+            }
+        }
+
+        /* New styles for enhanced sections */
+        .ai-insight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .ai-insight-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .pattern-card {
+            border-left: 4px solid #95a5a6;
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .pattern-card.severity-high {
+            border-left-color: #e74c3c;
+            background: #ffe4e1;
+        }
+
+        .pattern-card.severity-medium {
+            border-left-color: #f39c12;
+            background: #fff3cd;
+        }
+
+        .pattern-card.severity-low {
+            border-left-color: #3498db;
+            background: #e8f4f8;
+        }
+
+        .pattern-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .severity-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .pattern-card.severity-medium .severity-badge {
+            background: #f39c12;
+        }
+
+        .pattern-card.severity-low .severity-badge {
+            background: #3498db;
+        }
+
+        .pattern-implication {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+
+        .enclave-card {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 4px;
+        }
+
+        .mixed-area-card {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-header">
+        <div class="report-title">ELECTION INSIGHTS REPORT</div>
+        <div class="station-info">Kerala State Cashew Development Corporation Office, Near Collector's Bungalow</div>
+        <div class="station-info">Pattathanam Assembly Constituency, Kollam District, Kerala</div>
+        <div class="station-info">Generated: 2025-11-09 05:34</div>
+        <div class="station-info">Total Voters Analyzed: 856 | Polling Area: Kerala State Cashew Development Corporation Office, Near Collector's Bungalow</div>
+    </div>
+
+    
+        <div class="executive-summary">
+            <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">856</div>
+                    <div class="metric-label">Total Voters</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">46.0</div>
+                    <div class="metric-label">Average Age (years)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">44.0</div>
+                    <div class="metric-label">Median Age (years)</div>
+                </div>
+            </div>
+
+            <div class="critical-finding">
+                <h3>Critical Finding</h3>
+                <p><span class="classification-badge" style="background: #27ae60;">SAFE BASE</span></p>
+                <p>Strong Christian majority provides solid base</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">1. RELIGIOUS DEMOGRAPHICS & STRATEGIC IMPLICATIONS</h2>
+
+            <h3 class="subsection-title">1.1 Religious Composition</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Religion</th>
+                        <th>Total Voters</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>Christian</td>
+                <td>799</td>
+                <td>93.3%</td>
+            </tr>
+            
+            <tr>
+                <td>Hindu</td>
+                <td>46</td>
+                <td>5.4%</td>
+            </tr>
+            
+            <tr>
+                <td>Muslim</td>
+                <td>11</td>
+                <td>1.3%</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Insight:</div>
+                <p>Strong Christian base (93.3%) provides solid foundation. Focus on maintaining unity and high turnout.</p>
+            </div>
+
+            <h3 class="subsection-title">1.2 Age Profiles by Religion</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Religion</th>
+                        <th>Avg Age</th>
+                        <th>Young (≤35)</th>
+                        <th>Middle (36-55)</th>
+                        <th>Senior (56+)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>Christian</td>
+                    <td>46.1 yrs</td>
+                    <td>188 (23.5%)</td>
+                    <td>422 (52.8%)</td>
+                    <td>189 (23.7%)</td>
+                </tr>
+                
+                <tr>
+                    <td>Hindu</td>
+                    <td>42.7 yrs</td>
+                    <td>15 (32.6%)</td>
+                    <td>22 (47.8%)</td>
+                    <td>9 (19.6%)</td>
+                </tr>
+                
+                <tr>
+                    <td>Muslim</td>
+                    <td>51.3 yrs</td>
+                    <td>2 (18.2%)</td>
+                    <td>4 (36.4%)</td>
+                    <td>5 (45.5%)</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">2. AGE-BASED ANALYSIS & GENERATIONAL STRATEGY</h2>
+
+            <h3 class="subsection-title">2.1 Age Distribution</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Age Group</th>
+                        <th>Category</th>
+                        <th>Total</th>
+                        <th>Percentage</th>
+                        <th>Strategic Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>18-25</td>
+                <td>First-time + Early voters</td>
+                <td>16</td>
+                <td>1.9%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>26-35</td>
+                <td>Young professionals</td>
+                <td>189</td>
+                <td>22.1%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>36-45</td>
+                <td>Established families</td>
+                <td>256</td>
+                <td>29.9%</td>
+                <td class="priority-high">HIGHEST</td>
+            </tr>
+            
+            <tr>
+                <td>46-55</td>
+                <td>Peak earning</td>
+                <td>192</td>
+                <td>22.4%</td>
+                <td class="priority-high">HIGHEST</td>
+            </tr>
+            
+            <tr>
+                <td>56-65</td>
+                <td>Pre-retirement</td>
+                <td>133</td>
+                <td>15.5%</td>
+                <td class="priority-high">HIGH</td>
+            </tr>
+            
+            <tr>
+                <td>66+</td>
+                <td>Senior citizens</td>
+                <td>70</td>
+                <td>8.2%</td>
+                <td class="priority-medium">MEDIUM</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Critical Insight:</div>
+                <p>Focus on Established families - Decision-makers</p>
+                <p><strong>First-time voters (18-21):</strong> 8 (0.9% of electorate)</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">3. GENDER ANALYSIS - THE WOMEN VOTE</h2>
+
+            <h3 class="subsection-title">3.1 Overall Gender Split</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gender</th>
+                        <th>Count</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Male Voters</td>
+                        <td>423</td>
+                        <td>49.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Female Voters</td>
+                        <td>433</td>
+                        <td>50.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Gender Gap Analysis:</div>
+                <p>Female voters outnumber male voters by 10 votes
+                (1.2% margin).</p>
+            </div>
+
+            <h3 class="subsection-title">3.2 The Critical Demographic: Middle-Aged Women (30-50 years)</h3>
+            <div class="action-list">
+                <p><strong>Total middle-aged women:</strong> 246
+                (28.7% of entire electorate)</p>
+
+                <p><strong>STRATEGIC IMPERATIVE:</strong> This group represents 1 in 3 voters. They are:</p>
+                <ul>
+                    <li>Primary household decision-makers</li>
+                    <li>Concerned about healthcare, education, safety</li>
+                    <li>Influenced by welfare schemes (ration, pension, housing)</li>
+                    <li>Often decide how the entire family votes</li>
+                </ul>
+
+                <p><strong>Campaign Priority:</strong></p>
+                <ul>
+                    <li>Self-help groups (SHG) engagement</li><li>Healthcare and child education focus</li><li>Safety and security messaging</li><li>Cooking gas and ration subsidies</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">4. HOUSEHOLD & FAMILY VOTING BLOCS</h2>
+
+            <h3 class="subsection-title">4.1 Household Size Analysis</h3>
+            <p><strong>Total Unique Households:</strong> 386</p>
+            <p><strong>Average Voters per Household:</strong> 2.22</p>
+            <p><strong>Large Households (5+ voters):</strong> 17</p>
+            <p><strong>Very Large Households (8+ voters):</strong> 1</p>
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Gold Mine:</div>
+                <p>Large households contain significant voting power.
+                <strong>Winning one influential family member = winning 2.22 votes</strong></p>
+            </div>
+
+            <h3 class="subsection-title">4.2 Top 20 Influential Family Blocs</h3>
+            <p style="margin-bottom: 15px;"><em>Click on each family to view all members with serial numbers and house names</em></p>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family1')">
+                    <div>
+                        <strong>#1. Fransi</strong> - 047/1276 (Donbosckokolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            11 members | 1.29% voting power |
+                            Very Large Household
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon1">▼</span>
+                </div>
+                <div class="family-members" id="family1">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 11</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>487</strong> - Fransi
+                    (F, 64) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>489</strong> - Mathyu
+                    (M, 60) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>491</strong> - Saju
+                    (M, 55) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>492</strong> - Menansi
+                    (F, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>493</strong> - Samsan
+                    (M, 48) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>494</strong> - Jaksan
+                    (M, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>495</strong> - Lisi
+                    (F, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>497</strong> - Solaman
+                    (M, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>498</strong> - Gladi Mathyu
+                    (F, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Koni</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>501</strong> - Salu
+                    (M, 30) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nager</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>502</strong> - Sabu S
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nagar 185</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family2')">
+                    <div>
+                        <strong>#2. Anthoniya</strong> - 047/450 (Donbosckokolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            10 members | 1.17% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon2">▼</span>
+                </div>
+                <div class="family-members" id="family2">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 10</p>
+                        <p><strong>Strategy:</strong> High-priority personal visit by senior leader | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>117</strong> - Anthoniya
+                    (F, 87) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>120</strong> - Aloshyas
+                    (M, 53) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>121</strong> - Moli
+                    (F, 52) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>122</strong> - Josaf
+                    (M, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>123</strong> - Sofiya
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbos Ko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>124</strong> - Joy
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>126</strong> - Lalu Steefan
+                    (M, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>127</strong> - Soni
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donboscko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>128</strong> - Jaya
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>131</strong> - Nobin A
+                    (M, 27) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family3')">
+                    <div>
+                        <strong>#3. Eda</strong> - 047/1294 (Donbosko Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            9 members | 1.05% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon3">▼</span>
+                </div>
+                <div class="family-members" id="family3">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 9</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>548</strong> - Eda
+                    (F, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>549</strong> - Soppi
+                    (F, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>550</strong> - Meri Banchamin
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>551</strong> - Telma
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 DONBOSCONAGAR</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>552</strong> - Delma Banchamin
+                    (F, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>553</strong> - Sisili Jeckab
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>554</strong> - Deepu Jeckab
+                    (M, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>555</strong> - Renjini
+                    (F, 32) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>556</strong> - Yesudas
+                    (M, 30) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Nagar</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family4')">
+                    <div>
+                        <strong>#4. Fransis</strong> - 047/424 (Donbosckokolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            9 members | 1.05% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon4">▼</span>
+                </div>
+                <div class="family-members" id="family4">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 9</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>37</strong> - Fransis
+                    (M, 59) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>38</strong> - Fradi
+                    (M, 54) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>39</strong> - Edna
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>40</strong> - Kunjumol
+                    (F, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>41</strong> - Ttaittas
+                    (M, 51) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>42</strong> - Merli
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>43</strong> - Sofiya
+                    (F, 33) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Dombosco Nagar 195</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>44</strong> - Manuel Fredy
+                    (M, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Colony 196</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>45</strong> - Fevin Fredy
+                    (M, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Colony 196</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family5')">
+                    <div>
+                        <strong>#5. Jarom</strong> - 047/441 (Don Bosko Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.93% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon5">▼</span>
+                </div>
+                <div class="family-members" id="family5">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 7, Muslim: 1</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>90</strong> - Jarom
+                    (M, 62) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>91</strong> - Fathima
+                    (F, 61) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>92</strong> - Banadikd
+                    (M, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>93</strong> - Vinsanr
+                    (M, 51) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>94</strong> - Lissi
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>95</strong> - Joyi
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>96</strong> - Baiju
+                    (M, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>97</strong> - Liji
+                    (F, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Nagar 223</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family6')">
+                    <div>
+                        <strong>#6. Klamanrbarnad</strong> - 047/427 (Donbosko Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            8 members | 0.93% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon6">▼</span>
+                </div>
+                <div class="family-members" id="family6">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 8</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>47</strong> - Klamanrbarnad
+                    (M, 65) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>48</strong> - Vikdoriya
+                    (F, 56) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbos Ko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>49</strong> - Mebil
+                    (F, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>50</strong> - Saiman
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>51</strong> - Shaini
+                    (F, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>52</strong> - Simi
+                    (F, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>53</strong> - Saju
+                    (M, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>54</strong> - Nimi
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbos Ko Kolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family7')">
+                    <div>
+                        <strong>#7. Liyons Natto</strong> - 047/1336 (Fisharman Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.82% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon7">▼</span>
+                </div>
+                <div class="family-members" id="family7">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>657</strong> - Liyons Natto
+                    (M, 64) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>659</strong> - Reychal
+                    (F, 61) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>660</strong> - Suni
+                    (F, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>661</strong> - Mery Sheeja
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>662</strong> - Linsi Natto
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>663</strong> - Jerald Natto
+                    (M, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>664</strong> - Limma Netto
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family8')">
+                    <div>
+                        <strong>#8. Jonsan</strong> - 047/482 (Kadappuram Puranpock)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.82% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon8">▼</span>
+                </div>
+                <div class="family-members" id="family8">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>255</strong> - Jonsan
+                    (M, 71) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>256</strong> - Jayin
+                    (F, 62) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>257</strong> - Suni
+                    (F, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>258</strong> - Shibu
+                    (M, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>259</strong> - Terence
+                    (M, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puramboke</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>260</strong> - Sherli
+                    (F, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>261</strong> - Josfransis
+                    (M, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family9')">
+                    <div>
+                        <strong>#9. Rajan</strong> - 047/468 (Reena Kottej)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.82% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon9">▼</span>
+                </div>
+                <div class="family-members" id="family9">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 4, Hindu: 3</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>198</strong> - Rajan
+                    (M, 61) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Reena Kottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>199</strong> - Selvi
+                    (F, 59) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Reena Kottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>200</strong> - Jonsan
+                    (M, 50) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Reena Kottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>201</strong> - Vijayamma
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Reenakottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>202</strong> - Binu
+                    (M, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Reena Kottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>203</strong> - Baiju
+                    (M, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Reena Kottej</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>204</strong> - Sheeba
+                    (F, 34) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Reena Cottage</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family10')">
+                    <div>
+                        <strong>#10. Anrani</strong> - 047/480 (Fisharman Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            7 members | 0.82% voting power |
+                            Multi-Family House
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon10">▼</span>
+                </div>
+                <div class="family-members" id="family10">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 7</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Multiple touchpoints for different families | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>248</strong> - Anrani
+                    (M, 81) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>249</strong> - Bibiyana
+                    (F, 77) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>250</strong> - Anraniedvard
+                    (M, 60) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>251</strong> - Barckman
+                    (M, 55) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>252</strong> - Jackson Antony
+                    (M, 52) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>253</strong> - Joseph
+                    (M, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisherment Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>254</strong> - Sunilarani
+                    (M, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharmankolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family11')">
+                    <div>
+                        <strong>#11. Edisan</strong> - 047/494 (Fisharman Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon11">▼</span>
+                </div>
+                <div class="family-members" id="family11">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>301</strong> - Edisan
+                    (M, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>302</strong> - Joyi
+                    (M, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>303</strong> - Mezhsi
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>304</strong> - Alexander
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>305</strong> - Sevyar
+                    (M, 42) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>306</strong> - Stephen
+                    (M, 39) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family12')">
+                    <div>
+                        <strong>#12. Sunil</strong> - 047/1381 (Kadappuram Puranpock)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon12">▼</span>
+                </div>
+                <div class="family-members" id="family12">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>737</strong> - Sunil
+                    (M, 67) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>738</strong> - Vikdar
+                    (M, 59) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kadappurampuranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>739</strong> - Sttalla
+                    (F, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappurampuranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>740</strong> - Biyadris
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>742</strong> - Stellas
+                    (M, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappurampurambokk</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>743</strong> - Bibin
+                    (M, 33) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Kadappurampurambock</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family13')">
+                    <div>
+                        <strong>#13. Gabriel Baby</strong> - 047/1271 (Kadappuram Puranpock)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon13">▼</span>
+                </div>
+                <div class="family-members" id="family13">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>475</strong> - Gabriel Baby
+                    (M, 68) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Purampokku</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>476</strong> - Karmal
+                    (F, 58) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>477</strong> - Gilbartt
+                    (M, 58) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>478</strong> - Elsabath
+                    (F, 56) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>479</strong> - Meri
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>480</strong> - Sobha Bebi
+                    (F, 35) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Kadappuram Puranpock</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family14')">
+                    <div>
+                        <strong>#14. Alfonsa</strong> - 047/499 (Jon Bosko Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon14">▼</span>
+                </div>
+                <div class="family-members" id="family14">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 5, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>324</strong> - Alfonsa
+                    (F, 67) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Jon Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>325</strong> - Anrani
+                    (M, 67) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Jon Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>326</strong> - Agnas
+                    (F, 66) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Jon Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>332</strong> - Nelsan
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Jon Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>335</strong> - Sheeba
+                    (F, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Jonboscko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>336</strong> - Sobhana
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Jonboscko Kolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family15')">
+                    <div>
+                        <strong>#15. Antony</strong> - 047/499 (Don Bosco Colony)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon15">▼</span>
+                </div>
+                <div class="family-members" id="family15">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>323</strong> - Antony
+                    (M, 72) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>327</strong> - Poul
+                    (M, 50) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>328</strong> - Agnas Paul
+                    (F, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Nagar 40</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>330</strong> - Bindhu Paul
+                    (F, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>331</strong> - Pol
+                    (M, 43) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>337</strong> - Vincy Paul
+                    (F, 28) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nagar 170</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family16')">
+                    <div>
+                        <strong>#16. Kristtafarklamanr</strong> - 047/430 (Donbosckokolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon16">▼</span>
+                </div>
+                <div class="family-members" id="family16">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>57</strong> - Kristtafarklamanr
+                    (M, 72) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>58</strong> - Dreesa
+                    (F, 66) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>59</strong> - Antony
+                    (M, 58) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>60</strong> - Linda
+                    (F, 56) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>61</strong> - Baiju
+                    (M, 50) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosco Nagar</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>62</strong> - Soli
+                    (M, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family17')">
+                    <div>
+                        <strong>#17. Jastteen</strong> - 047/448 (Donbosko Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            6 members | 0.7% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon17">▼</span>
+                </div>
+                <div class="family-members" id="family17">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 6</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>108</strong> - Jastteen
+                    (M, 56) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>109</strong> - Biyadrees
+                    (F, 50) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>110</strong> - Janatt
+                    (F, 45) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>111</strong> - Joni
+                    (M, 44) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>112</strong> - Shibu
+                    (M, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosko Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>113</strong> - Saju
+                    (M, 41) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Don Bosko Kolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family18')">
+                    <div>
+                        <strong>#18. Saiman</strong> - 047/451 (Donbosckokolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            5 members | 0.58% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon18">▼</span>
+                </div>
+                <div class="family-members" id="family18">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 5</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>132</strong> - Saiman
+                    (M, 66) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>133</strong> - Rejeena
+                    (F, 60) - Elder<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>134</strong> - Stalin
+                    (M, 47) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbosco Nager - 166</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>135</strong> - Saji
+                    (M, 42) - Parent<br><em style='color: #666; font-size: 13px;'>🏠 Donbosckokolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>136</strong> - Reena
+                    (F, 40) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Donbos Ko Kolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family19')">
+                    <div>
+                        <strong>#19. Joboy</strong> - 047/484 (Fishermen Colony)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            5 members | 0.58% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon19">▼</span>
+                </div>
+                <div class="family-members" id="family19">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 5</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Community-specific outreach (Christian)</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>265</strong> - Joboy
+                    (M, 61) - Head of Family<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>266</strong> - Vavachan
+                    (M, 53) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>267</strong> - Nirmala
+                    (F, 51) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>271</strong> - Sofiya
+                    (F, 30) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>272</strong> - Melaniya
+                    (F, 29) - Young Adult<br><em style='color: #666; font-size: 13px;'>🏠 Fishermen Colony</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="family-card">
+                <div class="family-header" onclick="toggleFamily('family20')">
+                    <div>
+                        <strong>#20. Bedalistt</strong> - 047/475 (Fisharman Kolani)
+                        <br>
+                        <span style="font-size: 13px; color: #2563eb;">📍 Low Numbers (0-15015)</span>
+                        <br>
+                        <span style="font-size: 14px; color: #666;">
+                            5 members | 0.58% voting power |
+                            Extended Family
+                        </span>
+                    </div>
+                    <span class="expand-icon" id="icon20">▼</span>
+                </div>
+                <div class="family-members" id="family20">
+                    <div style="padding: 15px; background: #f8f9fa;">
+                        <p><strong>Religious Composition:</strong> Christian: 4, Hindu: 1</p>
+                        <p><strong>Strategy:</strong> Personal home visit by campaign team | Focus on family head/eldest member | Secular/inclusive messaging</p>
+                        <hr style="margin: 10px 0;">
+                        <p><strong>Family Members:</strong></p>
+                        
+                <div class="member-item">
+                    <strong>229</strong> - Bedalistt
+                    (M, 59) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>231</strong> - Meri
+                    (F, 54) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>232</strong> - Anrani
+                    (M, 46) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>234</strong> - Mereena
+                    (F, 37) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                <div class="member-item">
+                    <strong>235</strong> - Sindhu
+                    (F, 36) - Adult Member<br><em style='color: #666; font-size: 13px;'>🏠 Fisharman Kolani</em>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">5. CROSS-DEMOGRAPHIC ANALYSIS</h2>
+
+            <h3 class="subsection-title">5.1 Strategic Demographic Clusters</h3>
+            <p>Multi-dimensional demographic segments ranked by strategic value:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Demographic Cluster</th>
+                        <th>Voters</th>
+                        <th>% of Electorate</th>
+                        <th>Avg Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>1</td>
+                <td>Christian Young Adults Women</td>
+                <td>175</td>
+                <td>20.44%</td>
+                <td>41.0</td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>Christian Young Adults Men</td>
+                <td>154</td>
+                <td>17.99%</td>
+                <td>41.0</td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td>Christian Middle Age Women</td>
+                <td>128</td>
+                <td>14.95%</td>
+                <td>55.5</td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td>Christian Middle Age Men</td>
+                <td>115</td>
+                <td>13.43%</td>
+                <td>56.6</td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td>Christian Youth Men</td>
+                <td>86</td>
+                <td>10.05%</td>
+                <td>29.7</td>
+            </tr>
+            
+            <tr>
+                <td>6</td>
+                <td>Christian Youth Women</td>
+                <td>71</td>
+                <td>8.29%</td>
+                <td>30.1</td>
+            </tr>
+            
+            <tr>
+                <td>7</td>
+                <td>Christian Senior Men</td>
+                <td>42</td>
+                <td>4.91%</td>
+                <td>72.5</td>
+            </tr>
+            
+            <tr>
+                <td>8</td>
+                <td>Christian Senior Women</td>
+                <td>28</td>
+                <td>3.27%</td>
+                <td>72.5</td>
+            </tr>
+            
+                </tbody>
+            </table>
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>The data reveals that Christians in the Middle (30-44) age group, both male and female, are by far the largest segments, together accounting for over 40% of the overall sample, indicating a strong concentration in this demographic intersection. Hindus are most concentrated in the Middle (30-44) - Female segment (30.4% of Hindus), making this a strategic group within a much smaller total, while Muslims are notably more represented among elderly females (27.3% of Muslims), an unusual age-gender skew for this group. The main strategic vulnerability is the clear underrepresentation of younger adults (18-29) across all religions, especially among Christians and Hindus, suggesting potential challenges in youth engagement or retention; meanwhile, the dominance of middle-aged Christian segments represents both a core strength and a possible risk if this group’s preferences shift.</p>
+                </div>
+                
+
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Application:</div>
+                <p>These clusters represent the most effective ways to segment your outreach. Focus on the top 3-5 clusters for maximum efficiency. Each cluster requires tailored messaging that speaks to their specific demographic identity.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">6. GEOGRAPHIC & REGIONAL ANALYSIS</h2>
+
+            <h3 class="subsection-title">6.1 Regional Demographics by House Numbers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>House Range</th>
+                        <th>Voters</th>
+                        <th>% Total</th>
+                        <th>Dominant Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>Low Numbers</td>
+                    <td>0-15015</td>
+                    <td>854</td>
+                    <td>99.8%</td>
+                    <td>Christian (93.4%)</td>
+                </tr>
+                
+                <tr>
+                    <td>High Numbers</td>
+                    <td>30031-45047</td>
+                    <td>2</td>
+                    <td>0.2%</td>
+                    <td>Christian (50.0%)</td>
+                </tr>
+                
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">6.2 Religious Enclaves (70%+ Concentration)</h3>
+            
+                <div class="enclave-card">
+                    <strong>Houses 1350-1400</strong>: Christian stronghold
+                    (96.6% - 119 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 1250-1300</strong>: Christian stronghold
+                    (96.0% - 151 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 500-550</strong>: Christian stronghold
+                    (94.9% - 59 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 400-450</strong>: Christian stronghold
+                    (94.5% - 91 voters)
+                </div>
+                
+                <div class="enclave-card">
+                    <strong>Houses 1300-1350</strong>: Christian stronghold
+                    (92.9% - 98 voters)
+                </div>
+                
+
+            <h3 class="subsection-title">6.3 Mixed/Swing Areas (High Diversity)</h3>
+            <p>No highly mixed areas identified</p>
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>Voter distribution is highly concentrated in house number ranges between 400 and 1500, with nearly all voters (99.8 percent) residing in "Low Numbers" regions and only two voters in "High Numbers." Within these clusters, Christian dominance is pronounced, averaging above 90 percent across major house ranges, with minimal religious diversity and no identified mixed-diverse areas. Strategically, outreach efforts should focus on the largest clusters (422-514 and 1247-1419) and key religious enclaves (especially 1250-1450), as these areas hold both the greatest voter density and clear religious homogeneity, allowing for targeted messaging and resource allocation.</p>
+                </div>
+                
+
+            <div class="recommendation-box">
+                <h4>Geographic Strategy:</h4>
+                <ul>
+                    <li>Target mixed areas with inclusive, cross-community messaging</li>
+                    <li>In enclaves, focus on mobilization and turnout rather than persuasion</li>
+                    <li>Use house number clustering for efficient door-to-door campaigns</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">7. PATTERN DETECTION & ANOMALIES</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">Patterns Detected</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">High Priority</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Medium Priority</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">7.1 Critical Patterns & Anomalies</h3>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>High concentration in 35-50 age group: 352 voters (41.1%)</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> Age-specific messaging will be highly effective</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 047/1276 (Donbosckokolani): 11 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Exceptionally large household at 047/450 (Donbosckokolani): 10 voters</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> High-value target - winning this household = multiple votes</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Christian extreme dominance: 799 voters (93.3%)</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> Consolidation strategy viable - focus on turnout over persuasion</p>
+            </div>
+            
+            <div class="pattern-card severity-high">
+                <div class="pattern-header">
+                    <span class="severity-badge">HIGH</span>
+                    <strong>Found 18 mixed-faith households (4.7% of all households)</strong>
+                </div>
+                <p class="pattern-implication"><em>Implication:</em> Significant interfaith mixing indicates openness to cross-community appeal</p>
+            </div>
+            
+
+            
+            <h3 class="subsection-title">7.2 Mixed-Faith Households</h3>
+            <p>Found Found 18 mixed-faith households (4.7% of all households)</p>
+            <div class="strategic-insight">
+                <div class="insight-title">Strategic Importance:</div>
+                <p>Significant interfaith mixing indicates openness to cross-community appeal</p>
+            </div>
+            
+
+            
+                <div class="ai-insight-box">
+                    <div class="ai-insight-title">🤖 AI Insight:</div>
+                    <p>The unusually high proportion of voters aged 35-50 suggests that election messaging and outreach should prioritize middle-aged concerns, as they are likely to be the most influential block. The presence of exceptionally large households may indicate extended families or compound living arrangements, making these locations important for targeted canvassing or community engagement. The overwhelming Christian majority means that faith-based issues or outreach through churches could be highly effective, but the existence of mixed-faith households highlights pockets of religious diversity that may require nuanced messaging to avoid alienation and foster inclusion.</p>
+                </div>
+                
+
+            <div class="action-list">
+                <h4>Action Items from Pattern Analysis:</h4>
+                <ol>
+                    <li>Review high-severity patterns and adjust strategy accordingly</li>
+                    <li>Address identified demographic gaps or imbalances</li>
+                    <li>Leverage unusual patterns as strategic opportunities</li>
+                    <li>Monitor mixed-faith households for swing potential</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">8. WINNING STRATEGY FOR THIS DISTRICT</h2>
+
+            <h3 class="subsection-title">Scenario: Coalition Building Strategy</h3>
+            <p><strong>Formula:</strong> Build cross-community coalition</p>
+
+            <div class="recommendation-box">
+                <h4>Requirements:</h4>
+                <ul>
+                    
+            <li><strong>Christian Consolidation:</strong> 799 voters
+            (need 85% = 679 votes)</li>
+            
+            <li><strong>Coalition Support:</strong> 57 voters
+            (need 40% = 22 votes)</li>
+            
+                </ul>
+                <p><strong>Expected Total:</strong> 701 votes (82.0% vote share)</p>
+                <p><strong>Margin of Victory:</strong> 272 votes</p>
+            </div>
+
+            <div class="action-list">
+                <h4>Key Actions:</h4>
+                <ol>
+                    <li>Consolidate Christian vote bank through community leaders</li><li>Women-centric campaign with SHG meetings and welfare focus</li><li>Door-to-door campaign for large households (5+ voters)</li><li>WhatsApp groups covering 60% of 18-35 demographic</li><li>Community meetings with 50+ attendance each</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">9. PRIORITY TARGET DEMOGRAPHICS (Rank Ordered)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Demographic</th>
+                        <th>Count</th>
+                        <th>Why Important</th>
+                        <th>How to Reach</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td><strong>1</strong></td>
+                <td>Middle-aged women (30-50)</td>
+                <td>246 (28.7%)</td>
+                <td>Largest persuadable group, family decision-makers</td>
+                <td>Women-centric rallies, SHG engagement, welfare promises</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2</strong></td>
+                <td>Large households (5+ voters)</td>
+                <td>17 (4.4%)</td>
+                <td>One converted family = 5-8 votes</td>
+                <td>Personal visits, respected community member introductions</td>
+            </tr>
+            
+            <tr>
+                <td><strong>3</strong></td>
+                <td>Young voters (18-35)</td>
+                <td>205 (23.9%)</td>
+                <td>Aspirational, persuadable, digital-savvy</td>
+                <td>Employment promises, social media, youth leaders</td>
+            </tr>
+            
+            <tr>
+                <td><strong>4</strong></td>
+                <td>Senior citizens (60+)</td>
+                <td>140 (16.4%)</td>
+                <td>High turnout, consistent voters</td>
+                <td>Healthcare, pension, respect for elders</td>
+            </tr>
+            
+            <tr>
+                <td><strong>5</strong></td>
+                <td>First-time voters (18-21)</td>
+                <td>8 (0.9%)</td>
+                <td>Malleable, high energy, future base</td>
+                <td>Campus outreach, social media, youth icons</td>
+            </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">10. FINAL RECOMMENDATIONS</h2>
+
+            <div class="action-list">
+                <h3 class="subsection-title">Top 5 Actions for Kerala State Cashew Development Corporation Office, Near Collector's Bungalow</h3>
+                <ol>
+                    <li><strong>Action 1:</strong> Consolidate Christian vote bank through community leaders</li><li><strong>Action 2:</strong> Women-centric campaign with SHG meetings and welfare focus</li><li><strong>Action 3:</strong> Door-to-door campaign for large households (5+ voters)</li><li><strong>Action 4:</strong> WhatsApp groups covering 60% of 18-35 demographic</li><li><strong>Action 5:</strong> Community meetings with 50+ attendance each</li>
+                </ol>
+            </div>
+
+            <div class="recommendation-box">
+                <h3 class="subsection-title">Success Metrics</h3>
+                <ul>
+                    <li>100% personal contact (5+ voter houses)</li><li>60% coverage of 18-35 age group</li><li>3+ SHG meetings with 30+ attendance</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">Turnout Targets:</h4>
+                <ul>
+                    <li><strong>Minimum required:</strong> 65% (556 voters)</li>
+                    <li><strong>Target:</strong> 75% (642 voters)</li>
+                    <li><strong>Stretch goal:</strong> 85% (727 voters)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 3px solid #2c3e50;">
+            <h3>Report End</h3>
+            <p><strong>Kerala State Cashew Development Corporation Office, Near Collector's Bungalow:</strong> 856 voters | Generated 2025-11-09</p>
+        </div>
+        
+
+    <script>
+        function toggleFamily(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById('icon' + id.replace('family', ''));
+
+            if (element.classList.contains('expanded')) {
+                element.classList.remove('expanded');
+                icon.classList.remove('rotated');
+            } else {
+                element.classList.add('expanded');
+                icon.classList.add('rotated');
+            }
+        }
+    </script>
+</body>
+</html>
