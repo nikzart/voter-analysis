@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test bcrypt</title>
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+</head>
+<body>
+    <h1>Testing bcrypt.js</h1>
+    <p>Check console for results</p>
+
+    <script>
+        console.log('bcrypt available:', typeof bcrypt !== 'undefined');
+
+        const password = "MMVfV79L8Qh8Ps8C";
+        const hash = "$2b$12$sCyMPvKiqWWiWT1x01m7N.T2YR3ISvyeFC1fZ4COEBPq3TRJAoQzq";
+
+        console.log('Password:', password);
+        console.log('Hash:', hash);
+
+        try {
+            const result = bcrypt.compareSync(password, hash);
+            console.log('Result:', result);
+
+            if (result) {
+                document.body.innerHTML += '<h2 style="color: green">✓ Password verification PASSED!</h2>';
+            } else {
+                document.body.innerHTML += '<h2 style="color: red">✗ Password verification FAILED!</h2>';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.body.innerHTML += '<h2 style="color: red">✗ Error: ' + error.message + '</h2>';
+        }
+    </script>
+</body>
+</html>
