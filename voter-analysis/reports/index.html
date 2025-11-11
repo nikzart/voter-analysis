@@ -219,7 +219,7 @@
             }
 
             body.authenticated {
-                padding-top: 180px;
+                padding-top: 145px;
             }
 
             .glass-navbar {
@@ -237,17 +237,33 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 12px;
+                gap: 8px;
             }
 
             .navbar-left {
-                flex: 0 0 auto;
-                gap: 0;
+                flex: 1;
+                min-width: 0;
+                gap: 8px;
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-right {
+                flex-shrink: 0;
             }
 
             .navbar-title {
                 font-size: 14px;
                 font-weight: 600;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            .navbar-tabs {
+                flex-shrink: 0;
             }
 
             .navbar-left .navbar-search-wrapper {
@@ -263,8 +279,21 @@
             }
 
             .logout-button {
-                padding: 7px 12px;
-                font-size: 12px;
+                padding: 8px;
+                min-width: 38px;
+                min-height: 38px;
+                justify-content: center;
+                border-radius: 8px;
+            }
+
+            .logout-icon {
+                display: block; /* Show icon on mobile */
+                width: 20px;
+                height: 20px;
+            }
+
+            .logout-text {
+                display: none; /* Hide text on mobile */
             }
 
             /* Row 2: Search (full width) */
@@ -399,6 +428,95 @@
                 padding: 24px 16px;
                 font-size: 12px;
             }
+
+            /* Tab buttons in navbar - mobile */
+            .navbar-tabs {
+                gap: 4px;
+            }
+
+            .tab-btn {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+
+            .tab-btn span {
+                display: none; /* Icon only on mobile */
+            }
+
+            .tab-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Voter search mode padding */
+            body.authenticated.voter-search-active {
+                padding-top: 62px; /* Just title row on mobile */
+            }
+
+            /* Voter Search Mobile */
+            .voter-search-header h2 {
+                font-size: 22px;
+            }
+
+            .voter-search-header p {
+                font-size: 14px;
+            }
+
+            .voter-search-form {
+                padding: 20px;
+            }
+
+            .search-inputs-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .search-filters-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .voter-search-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .voter-card {
+                padding: 16px;
+            }
+
+            .voter-card-name {
+                font-size: 16px;
+            }
+
+            .voter-detail-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .voter-detail-label {
+                min-width: auto;
+                font-size: 12px;
+            }
+
+            .voter-detail-value {
+                font-size: 14px;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .pagination-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
         }
 
         /* Small Mobile Styles */
@@ -410,7 +528,7 @@
             }
 
             body.authenticated {
-                padding-top: 155px;
+                padding-top: 122px;
             }
 
             .glass-navbar {
@@ -425,17 +543,40 @@
 
             /* Row 1: Title + Actions */
             .navbar-content {
-                gap: 8px;
+                gap: 6px;
+            }
+
+            .navbar-left {
+                gap: 6px;
             }
 
             .navbar-title {
                 font-size: 13px;
                 font-weight: 600;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            .navbar-tabs {
+                flex-shrink: 0;
             }
 
             .logout-button {
-                padding: 6px 10px;
-                font-size: 11px;
+                padding: 7px;
+                min-width: 36px;
+                min-height: 36px;
+                justify-content: center;
+                border-radius: 8px;
+            }
+
+            .logout-icon {
+                display: block;
+                width: 18px;
+                height: 18px;
+            }
+
+            .logout-text {
+                display: none;
             }
 
             /* Row 2: Search (full width) */
@@ -590,6 +731,69 @@
             .footer {
                 padding: 20px 12px;
                 font-size: 11px;
+            }
+
+            /* Tab buttons in navbar - small mobile */
+            .tab-btn {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+
+            .tab-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Voter search mode padding */
+            body.authenticated.voter-search-active {
+                padding-top: 58px; /* Just title row on small mobile */
+            }
+
+            /* Voter Search Mobile 480px */
+            .voter-search-header h2 {
+                font-size: 20px;
+            }
+
+            .voter-search-header p {
+                font-size: 13px;
+            }
+
+            .voter-search-form {
+                padding: 16px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            .voter-search-button {
+                padding: 10px 24px;
+                font-size: 15px;
+            }
+
+            .voter-card {
+                padding: 14px;
+            }
+
+            .voter-card-name {
+                font-size: 15px;
+            }
+
+            .voter-detail-label,
+            .voter-detail-value {
+                font-size: 13px;
+            }
+
+            .pagination-info {
+                width: 100%;
+                text-align: center;
+                font-size: 13px;
             }
         }
 
@@ -785,6 +989,46 @@
             letter-spacing: -0.02em;
         }
 
+        /* Tab Navigation in Navbar */
+        .navbar-tabs {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: rgba(249, 250, 251, 0.8);
+            color: #374151;
+        }
+
+        .tab-btn.active {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .tab-icon {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
         .navbar-search-wrapper {
             flex: 1;
             max-width: 500px;
@@ -887,6 +1131,9 @@
         }
 
         .logout-button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             padding: 8px 18px;
             background: rgba(239, 68, 68, 0.1);
             color: #dc2626;
@@ -902,6 +1149,17 @@
         .logout-button:hover {
             background: rgba(239, 68, 68, 0.15);
             border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .logout-icon {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
+            display: none; /* Hidden on desktop */
+        }
+
+        .logout-text {
+            display: inline; /* Shown on desktop */
         }
 
         /* Navbar Stats Row */
@@ -943,7 +1201,373 @@
             padding-top: 180px;
         }
 
+        /* Navbar height adjustments for different tabs */
+        body.authenticated.voter-search-active {
+            padding-top: 70px; /* Just title row when stats hidden */
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Visibility helpers */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Voter Search Styles */
+        .voter-search-container {
+            padding: 20px 0;
+        }
+
+        .voter-search-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .voter-search-header h2 {
+            font-size: 28px;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .voter-search-header p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* Loading Indicator */
+        .search-loading-indicator {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .search-loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(37, 99, 235, 0.1);
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .search-loading-indicator p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* Search Form */
+        .voter-search-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .search-inputs-row,
+        .search-filters-row {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-inputs-row {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .search-filters-row {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1f2937;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-button-group {
+            justify-content: flex-end;
+        }
+
+        .voter-search-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 32px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .voter-search-button:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .voter-search-button:active {
+            transform: scale(0.98);
+        }
+
+        .voter-search-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .voter-search-button.searching {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        /* Search Results Container */
+        .search-results-container {
+            min-height: 200px;
+        }
+
+        .search-prompt {
+            text-align: center;
+            padding: 60px 20px;
+            color: #9ca3af;
+        }
+
+        .search-prompt svg {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            stroke: #d1d5db;
+        }
+
+        .search-prompt p {
+            font-size: 16px;
+        }
+
+        .search-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-results-header h3 {
+            font-size: 20px;
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .results-count {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .voter-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .voter-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: #2563eb;
+        }
+
+        .voter-card-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .voter-card-highlight {
+            background: rgba(37, 99, 235, 0.15);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .voter-card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .voter-detail-row {
+            display: flex;
+            font-size: 14px;
+        }
+
+        .voter-detail-label {
+            color: #6b7280;
+            min-width: 120px;
+            font-weight: 500;
+        }
+
+        .voter-detail-value {
+            color: #1f2937;
+            flex: 1;
+        }
+
+        .voter-card-footer {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .voter-id-badge {
+            font-size: 12px;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        .religion-badge {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .religion-hindu {
+            background: rgba(251, 146, 60, 0.1);
+            color: #ea580c;
+        }
+
+        .religion-muslim {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .religion-christian {
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .no-results svg {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            stroke: #d1d5db;
+        }
+
+        .no-results h3 {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+        }
+
+        .pagination-btn {
+            padding: 8px 16px;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .pagination-info {
+            color: #6b7280;
+            font-size: 14px;
+            padding: 0 12px;
+        }
+
     </style>
+
+    <!-- Fuse.js for fuzzy search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
 </head>
 <body>
     <!-- Login Overlay -->
@@ -981,7 +1605,24 @@
             <div class="navbar-content">
                 <div class="navbar-left">
                     <div class="navbar-title">Kerala Election Insights</div>
-                    <div class="navbar-search-wrapper">
+
+                    <!-- Tab Navigation integrated into navbar -->
+                    <div class="navbar-tabs">
+                        <button class="tab-btn active" data-tab="dashboard">
+                            <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                            <span>Dashboard</span>
+                        </button>
+                        <button class="tab-btn" data-tab="voter-search">
+                            <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <span>Voter Search</span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-search-wrapper" id="dashboardSearch">
                         <div id="searchToggle" class="search-toggle-btn">
                             <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <circle cx="11" cy="11" r="8"/>
@@ -1001,13 +1642,16 @@
                         <strong>Access:</strong> <span id="accessLevel">-</span>
                     </div>
                     <button id="logoutButton" class="logout-button">
-                        Logout
+                        <svg class="logout-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span class="logout-text">Logout</span>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile-only search row (duplicated for mobile 3-row layout) -->
-            <div class="navbar-search-wrapper navbar-search-mobile">
+            <div class="navbar-search-wrapper navbar-search-mobile" id="dashboardSearchMobile">
                 <div id="searchToggleMobile" class="search-toggle-btn">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <circle cx="11" cy="11" r="8"/>
@@ -1040,8 +1684,83 @@
     </nav>
 
     <div class="container">
-        <div id="wardsContainer" class="wards-grid">
-            <div class="loading">Loading election insights data...</div>
+        <!-- Dashboard Tab Content -->
+        <div id="dashboard-tab" class="tab-content active">
+            <div id="wardsContainer" class="wards-grid">
+                <div class="loading">Loading election insights data...</div>
+            </div>
+        </div>
+
+        <!-- Voter Search Tab Content -->
+        <div id="voter-search-tab" class="tab-content">
+            <div class="voter-search-container">
+                <div class="voter-search-header">
+                    <h2>Voter Search</h2>
+                    <p>Search for voters using name, guardian name, or house name</p>
+                </div>
+
+                <div id="voterSearchLoadingIndicator" class="search-loading-indicator" style="display: none;">
+                    <div class="search-loading-spinner"></div>
+                    <p>Loading voter database...</p>
+                </div>
+
+                <div id="voterSearchForm" class="voter-search-form" style="display: none;">
+                    <!-- Search Inputs -->
+                    <div class="search-inputs-row">
+                        <div class="form-group">
+                            <label for="nameSearch">Name</label>
+                            <input type="text" id="nameSearch" placeholder="Search by voter name...">
+                        </div>
+                        <div class="form-group">
+                            <label for="guardianSearch">Guardian Name</label>
+                            <input type="text" id="guardianSearch" placeholder="Search by guardian name...">
+                        </div>
+                        <div class="form-group">
+                            <label for="houseSearch">House Name</label>
+                            <input type="text" id="houseSearch" placeholder="Search by house name...">
+                        </div>
+                    </div>
+
+                    <!-- Filters Row -->
+                    <div class="search-filters-row">
+                        <div class="form-group">
+                            <label for="wardFilter">Ward (Optional)</label>
+                            <select id="wardFilter">
+                                <option value="">All Wards</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ageFilter">Age Range (Optional)</label>
+                            <select id="ageFilter">
+                                <option value="">All Ages</option>
+                                <option value="18-25">18-25 years</option>
+                                <option value="26-35">26-35 years</option>
+                                <option value="36-45">36-45 years</option>
+                                <option value="46-60">46-60 years</option>
+                                <option value="60+">60+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group search-button-group">
+                            <button id="voterSearchButton" class="voter-search-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                Search Voters
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div id="searchResultsContainer" class="search-results-container">
+                        <div class="search-prompt">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <p>Enter search terms to find voters</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -1145,12 +1864,6 @@
 
             const totalVoters = wards.reduce((sum, w) => sum + w.totalVoters, 0);
             document.getElementById('totalVoters').textContent = totalVoters.toLocaleString();
-
-            if (summary && summary.reports_generated) {
-                document.getElementById('reportsGenerated').textContent = `${summary.reports_generated}/${totalStations}`;
-            } else {
-                document.getElementById('reportsGenerated').textContent = '...';
-            }
         }
 
         function renderWards() {
@@ -1276,7 +1989,7 @@
                     // Hide login overlay
                     document.getElementById('loginOverlay').classList.add('hidden');
 
-                    // Show glassmorphic navbar
+                    // Show glassmorphic navbar (with integrated tabs)
                     document.getElementById('glassNavbar').classList.add('visible');
                     document.body.classList.add('authenticated');
 
@@ -1366,6 +2079,413 @@
         }
 
         init();
+
+        // ===== VOTER SEARCH FUNCTIONALITY =====
+
+        let voterData = null;
+        let currentSearchResults = [];
+        let currentPage = 1;
+        const resultsPerPage = 50;
+        let isVoterDataLoading = false;
+
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const tabName = button.getAttribute('data-tab');
+
+                // Update active tab button
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Update active tab content
+                tabContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(`${tabName}-tab`).classList.add('active');
+
+                // Toggle visibility based on active tab
+                const dashboardSearch = document.getElementById('dashboardSearch');
+                const dashboardSearchMobile = document.getElementById('dashboardSearchMobile');
+                const navbarStats = document.getElementById('navbarStatsGrid');
+
+                if (tabName === 'voter-search') {
+                    // Hide search bars and stats on voter search tab
+                    if (dashboardSearch) dashboardSearch.classList.add('hidden');
+                    if (dashboardSearchMobile) dashboardSearchMobile.classList.add('hidden');
+                    if (navbarStats) navbarStats.classList.add('hidden');
+                    document.body.classList.add('voter-search-active');
+
+                    // Load voter data if needed
+                    if (!voterData && !isVoterDataLoading) {
+                        await loadVoterData();
+                    }
+                } else {
+                    // Show search bars and stats on dashboard tab
+                    if (dashboardSearch) dashboardSearch.classList.remove('hidden');
+                    if (dashboardSearchMobile) dashboardSearchMobile.classList.remove('hidden');
+                    if (navbarStats) navbarStats.classList.remove('hidden');
+                    document.body.classList.remove('voter-search-active');
+                }
+            });
+        });
+
+        // Load voter index JSON
+        async function loadVoterData() {
+            if (isVoterDataLoading) return;
+
+            isVoterDataLoading = true;
+            const loadingIndicator = document.getElementById('voterSearchLoadingIndicator');
+            const searchForm = document.getElementById('voterSearchForm');
+
+            loadingIndicator.style.display = 'block';
+            searchForm.style.display = 'none';
+
+            try {
+                console.log('Loading voter index...');
+                const response = await fetch('voter_index.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                voterData = await response.json();
+                console.log(`Loaded ${voterData.length} voters`);
+
+                // Filter by access level
+                const access = dashboardAuth.getCurrentAccess();
+                if (access.level === 'ward') {
+                    // Ward user sees only their ward's voters
+                    voterData = voterData.filter(v => v.ward === access.wardId);
+                    console.log(`Filtered to ${voterData.length} voters for ward: ${access.wardId}`);
+                }
+
+                // Populate ward filter dropdown
+                populateWardFilter();
+
+                loadingIndicator.style.display = 'none';
+                searchForm.style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading voter data:', error);
+                loadingIndicator.innerHTML = `
+                    <div class="no-results">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <h3>Error Loading Voter Data</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            } finally {
+                isVoterDataLoading = false;
+            }
+        }
+
+        // Helper function for field-specific fuzzy search
+        function searchField(data, query, fieldName) {
+            // Skip if no query or no data
+            if (!query || !query.trim() || data.length === 0) {
+                return data;
+            }
+
+            // Create Fuse instance for this specific field
+            const fuse = new Fuse(data, {
+                keys: [fieldName],
+                threshold: 0.2,  // Stricter matching (80% similarity required)
+                ignoreLocation: true,
+                minMatchCharLength: 2
+            });
+
+            // Search and return matching items
+            const results = fuse.search(query.trim());
+            return results.map(r => r.item);
+        }
+
+        // Populate ward filter dropdown based on access level
+        function populateWardFilter() {
+            const wardFilter = document.getElementById('wardFilter');
+            const access = dashboardAuth.getCurrentAccess();
+
+            // Get unique wards from voter data
+            const wards = [...new Set(voterData.map(v => v.ward))].sort();
+
+            // Clear existing options except "All Wards"
+            wardFilter.innerHTML = '<option value="">All Wards</option>';
+
+            // Add ward options
+            wards.forEach(ward => {
+                const option = document.createElement('option');
+                option.value = ward;
+                option.textContent = ward;
+                wardFilter.appendChild(option);
+            });
+
+            // For ward-level users, pre-select and disable their ward
+            if (access.level === 'ward') {
+                wardFilter.value = access.wardId;
+                wardFilter.disabled = true;
+            }
+        }
+
+        // Search functionality with debouncing
+        let searchTimeout = null;
+        const searchButton = document.getElementById('voterSearchButton');
+        const nameInput = document.getElementById('nameSearch');
+        const guardianInput = document.getElementById('guardianSearch');
+        const houseInput = document.getElementById('houseSearch');
+        const wardFilterSelect = document.getElementById('wardFilter');
+        const ageFilterSelect = document.getElementById('ageFilter');
+
+        searchButton.addEventListener('click', performSearch);
+
+        // Also trigger search on Enter key
+        [nameInput, guardianInput, houseInput].forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+
+        function performSearch() {
+            const nameQuery = nameInput.value.trim();
+            const guardianQuery = guardianInput.value.trim();
+            const houseQuery = houseInput.value.trim();
+            const wardFilter = wardFilterSelect.value;
+            const ageFilter = ageFilterSelect.value;
+
+            // At least one search field must be filled
+            if (!nameQuery && !guardianQuery && !houseQuery) {
+                showSearchPrompt('Please enter at least one search term');
+                return;
+            }
+
+            searchButton.classList.add('searching');
+            searchButton.textContent = 'Searching...';
+
+            // Small delay for UX
+            setTimeout(() => {
+                executeSearch(nameQuery, guardianQuery, houseQuery, wardFilter, ageFilter);
+                searchButton.classList.remove('searching');
+                searchButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    Search Voters
+                `;
+            }, 100);
+        }
+
+        function executeSearch(nameQuery, guardianQuery, houseQuery, wardFilter, ageFilter) {
+            // Start with all voter data
+            let results = [...voterData];
+
+            // Apply field-specific searches sequentially (AND logic)
+            // Each search filters the results from the previous search
+            results = searchField(results, nameQuery, 'name');
+            results = searchField(results, guardianQuery, 'guardian');
+            results = searchField(results, houseQuery, 'houseName');
+
+            // Apply ward filter
+            if (wardFilter) {
+                results = results.filter(v => v.ward === wardFilter);
+            }
+
+            // Apply age filter
+            if (ageFilter) {
+                results = results.filter(v => {
+                    const age = parseInt(v.age);
+                    if (isNaN(age)) return false;
+
+                    switch(ageFilter) {
+                        case '18-25': return age >= 18 && age <= 25;
+                        case '26-35': return age >= 26 && age <= 35;
+                        case '36-45': return age >= 36 && age <= 45;
+                        case '46-60': return age >= 46 && age <= 60;
+                        case '60+': return age >= 60;
+                        default: return true;
+                    }
+                });
+            }
+
+            currentSearchResults = results;
+            currentPage = 1;
+            renderSearchResults();
+        }
+
+        function renderSearchResults() {
+            const container = document.getElementById('searchResultsContainer');
+
+            if (currentSearchResults.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <h3>No Voters Found</h3>
+                        <p>Try adjusting your search terms or filters</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Calculate pagination
+            const totalResults = currentSearchResults.length;
+            const totalPages = Math.ceil(totalResults / resultsPerPage);
+            const startIdx = (currentPage - 1) * resultsPerPage;
+            const endIdx = Math.min(startIdx + resultsPerPage, totalResults);
+            const pageResults = currentSearchResults.slice(startIdx, endIdx);
+
+            // Build results HTML
+            let html = `
+                <div class="search-results-header">
+                    <h3>Search Results</h3>
+                    <span class="results-count">
+                        Showing ${startIdx + 1}-${endIdx} of ${totalResults.toLocaleString()} voters
+                    </span>
+                </div>
+                <div class="results-grid">
+            `;
+
+            pageResults.forEach(voter => {
+                const religionClass = voter.religion ? `religion-${voter.religion.toLowerCase()}` : '';
+
+                html += `
+                    <div class="voter-card">
+                        <div class="voter-card-name">${escapeHtml(voter.name)}</div>
+                        <div class="voter-card-details">
+                            <div class="voter-detail-row">
+                                <span class="voter-detail-label">Guardian:</span>
+                                <span class="voter-detail-value">${escapeHtml(voter.guardian)}</span>
+                            </div>
+                            <div class="voter-detail-row">
+                                <span class="voter-detail-label">House Name:</span>
+                                <span class="voter-detail-value">${escapeHtml(voter.houseName)}</span>
+                            </div>
+                            <div class="voter-detail-row">
+                                <span class="voter-detail-label">Ward:</span>
+                                <span class="voter-detail-value">${escapeHtml(voter.ward)}</span>
+                            </div>
+                            <div class="voter-detail-row">
+                                <span class="voter-detail-label">Polling Station:</span>
+                                <span class="voter-detail-value">${escapeHtml(voter.pollingStation)}</span>
+                            </div>
+                            <div class="voter-detail-row">
+                                <span class="voter-detail-label">Age / Gender:</span>
+                                <span class="voter-detail-value">${escapeHtml(voter.gender)} / ${escapeHtml(voter.age)}</span>
+                            </div>
+                        </div>
+                        <div class="voter-card-footer">
+                            <span class="voter-id-badge">${escapeHtml(voter.voterId)}</span>
+                            ${voter.religion ? `<span class="religion-badge ${religionClass}">${escapeHtml(voter.religion)}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+
+            // Add pagination if needed
+            if (totalPages > 1) {
+                html += renderPagination(totalPages);
+            }
+
+            container.innerHTML = html;
+
+            // Add pagination event listeners
+            if (totalPages > 1) {
+                setupPaginationListeners(totalPages);
+            }
+        }
+
+        function renderPagination(totalPages) {
+            let html = '<div class="pagination">';
+
+            // Previous button
+            html += `<button class="pagination-btn" id="prevPage" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>`;
+
+            // Page numbers (show max 7 pages)
+            const maxVisiblePages = 7;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" data-page="1">1</button>`;
+                if (startPage > 2) html += '<span class="pagination-info">...</span>';
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                const activeClass = i === currentPage ? 'active' : '';
+                html += `<button class="pagination-btn ${activeClass}" data-page="${i}">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += '<span class="pagination-info">...</span>';
+                html += `<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
+            }
+
+            // Next button
+            html += `<button class="pagination-btn" id="nextPage" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>`;
+
+            html += '</div>';
+            return html;
+        }
+
+        function setupPaginationListeners(totalPages) {
+            // Previous button
+            const prevBtn = document.getElementById('prevPage');
+            if (prevBtn && currentPage > 1) {
+                prevBtn.addEventListener('click', () => {
+                    currentPage--;
+                    renderSearchResults();
+                    scrollToTop();
+                });
+            }
+
+            // Next button
+            const nextBtn = document.getElementById('nextPage');
+            if (nextBtn && currentPage < totalPages) {
+                nextBtn.addEventListener('click', () => {
+                    currentPage++;
+                    renderSearchResults();
+                    scrollToTop();
+                });
+            }
+
+            // Page number buttons
+            document.querySelectorAll('.pagination-btn[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentPage = parseInt(btn.getAttribute('data-page'));
+                    renderSearchResults();
+                    scrollToTop();
+                });
+            });
+        }
+
+        function scrollToTop() {
+            document.querySelector('.voter-search-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showSearchPrompt(message = 'Enter search terms to find voters') {
+            const container = document.getElementById('searchResultsContainer');
+            container.innerHTML = `
+                <div class="search-prompt">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
     </script>
 </body>
 </html>
