@@ -59,7 +59,8 @@ def generate_voter_index():
                     'gender': gender,
                     'religion': str(row.get('religion', '')).strip(),
                     'voterId': str(row.get('New SEC ID No.', '')).strip(),
-                    'houseNo': str(row.get('OldWard No/ House No.', '')).strip()
+                    'houseNo': str(row.get('OldWard No/ House No.', '')).strip(),
+                    'serialNo': str(row.get('Serial No.', '')).strip()
                 }
 
                 # Only add if name exists

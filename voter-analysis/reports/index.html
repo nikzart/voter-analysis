@@ -490,8 +490,17 @@
                 padding: 16px;
             }
 
+            .voter-card-header {
+                gap: 8px;
+            }
+
             .voter-card-name {
                 font-size: 16px;
+            }
+
+            .voter-serial-badge {
+                font-size: 12px;
+                padding: 3px 8px;
             }
 
             .voter-detail-row {
@@ -781,8 +790,17 @@
                 padding: 14px;
             }
 
+            .voter-card-header {
+                gap: 6px;
+            }
+
             .voter-card-name {
                 font-size: 15px;
+            }
+
+            .voter-serial-badge {
+                font-size: 11px;
+                padding: 3px 6px;
             }
 
             .voter-detail-label,
@@ -1424,11 +1442,31 @@
             border-color: #2563eb;
         }
 
+        .voter-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
         .voter-card-name {
             font-size: 18px;
             font-weight: 600;
             color: #1f2937;
-            margin-bottom: 12px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .voter-serial-badge {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .voter-card-highlight {
@@ -2350,7 +2388,10 @@
 
                 html += `
                     <div class="voter-card">
-                        <div class="voter-card-name">${escapeHtml(voter.name)}</div>
+                        <div class="voter-card-header">
+                            <div class="voter-card-name">${escapeHtml(voter.name)}</div>
+                            <div class="voter-serial-badge">#${escapeHtml(voter.serialNo)}</div>
+                        </div>
                         <div class="voter-card-details">
                             <div class="voter-detail-row">
                                 <span class="voter-detail-label">Guardian:</span>
